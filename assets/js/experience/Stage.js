@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import LightManager from './LightManager';
 
 export default class Stage {
     constructor () {
@@ -10,7 +11,9 @@ export default class Stage {
         this.addRenderer();
         this.resize();
         this.addControls();
-        this.addLights();
+
+        this.lightManager = new LightManager(this);
+
         this.load();
 
         window.addEventListener('resize', this.resize.bind(this));
@@ -35,14 +38,6 @@ export default class Stage {
     addControls () {
         this.controls = new OrbitControls( this.camera, this.renderer.domElement );
     }
-    addLights () {
-        const light1 = new THREE.AmbientLight();
-        this.scene.add(light1);
-
-        const light2 = new THREE.DirectionalLight();
-        light2.position.set(1, 5, -1); // ~60º
-        this.scene.add(light2);
-    }
     resize () {
         this.rendererSize = {
             width: window.innerWidth,
@@ -61,7 +56,6 @@ export default class Stage {
         loader.load(
             '/assets/3D/terrain.glb',
             ( gltf ) => {
-                console.log(gltf)
                 this.scene.add( gltf.scene );
                 this.onReady();
             },
