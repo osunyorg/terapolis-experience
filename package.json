@@ -5,7 +5,8 @@
   "author": "osunyorg",
   "license": "MIT",
   "dependencies": {
-    "osuny": "./themes/osuny"
+    "osuny": "./themes/osuny",
+    "three": "^0.178.0"
   },
   "scripts": {
     "osuny": "npx osuny-hugo-theme"
