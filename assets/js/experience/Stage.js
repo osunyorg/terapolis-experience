@@ -8,9 +8,12 @@ export default class Stage {
         this.addScene();
         this.addCamera();
         this.addRenderer();
+        this.resize();
         this.addControls();
         this.addLights();
         this.load();
+
+        window.addEventListener('resize', this.resize.bind(this));
     }
     addScene () {
         this.scene = new THREE.Scene();
@@ -40,6 +43,15 @@ export default class Stage {
         light2.position.set(1, 5, -1); // ~60º
         this.scene.add(light2);
     }
+    resize () {
+        this.rendererSize = {
+            width: window.innerWidth,
+            height: window.innerHeight,
+        }
+        this.camera.aspect = this.rendererSize.width / this.rendererSize.height
+        this.camera.updateProjectionMatrix()
+        this.renderer.setSize(this.rendererSize.width, this.rendererSize.height)
+    }
     load () {
         const loader = new GLTFLoader();
         const dracoLoader = new DRACOLoader();
@@ -61,6 +73,7 @@ export default class Stage {
             }
         );
     }
+
     onReady () {
         this.renderer.setAnimationLoop( this.loop.bind(this) );
     }
