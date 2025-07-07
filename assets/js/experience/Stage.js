@@ -1,51 +1,52 @@
-import * as THREE from 'three';
+import { Scene, WebGLRenderer } from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import LightManager from './LightManager';
+import LightManager from './managers/LightManager';
+import CameraManager from './managers/CameraManager';
+import configuration from './data/configuration';
 
 export default class Stage {
     constructor () {
+        this.addRenderer();
         this.addScene();
         this.addCamera();
-        this.addRenderer();
-        this.resize();
         this.addControls();
-
-        this.lightManager = new LightManager(this);
-
+        this.addLights();
+        this.resize();
         this.load();
 
-        window.addEventListener('resize', this.resize.bind(this));
-    }
-    addScene () {
-        this.scene = new THREE.Scene();
-    }
-    addCamera () {
-        this.camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 10000 );
-        this.camera.position.x = 5;
-        this.camera.position.y = 18;
-        this.camera.position.z = 10;
+        window.addEventListener( 'resize', this.resize.bind( this ) );
     }
     addRenderer () {
-        this.renderer = new THREE.WebGLRenderer();
-        this.renderer.setSize( window.innerWidth, window.innerHeight );
-
-        // this.renderer.toneMapping = Number(state.toneMapping);
-        // this.renderer.toneMappingExposure = Math.pow(2, state.exposure);
+        this.renderer = new WebGLRenderer();
+        this.rendererSize = {
+            width: window.innerWidth,
+            height: window.innerHeight,
+        };
+        this.renderer.setSize( this.rendererSize.width, this.rendererSize.height );
         document.body.appendChild( this.renderer.domElement );
+    }
+    addScene () {
+        this.scene = new Scene();
+    }
+    addCamera () {
+        this.cameraManager = new CameraManager( this );
+        this.camera = this.cameraManager.camera;
     }
     addControls () {
         this.controls = new OrbitControls( this.camera, this.renderer.domElement );
+    }
+    addLights () {
+        this.lightManager = new LightManager( this );
     }
     resize () {
         this.rendererSize = {
             width: window.innerWidth,
             height: window.innerHeight,
         }
-        this.camera.aspect = this.rendererSize.width / this.rendererSize.height
-        this.camera.updateProjectionMatrix()
-        this.renderer.setSize(this.rendererSize.width, this.rendererSize.height)
+        this.renderer.setSize( this.rendererSize.width, this.rendererSize.height );
+        this.cameraManager.resize();
     }
     load () {
         const loader = new GLTFLoader();
@@ -69,8 +70,9 @@ export default class Stage {
     }
 
     onReady () {
-        this.renderer.setAnimationLoop( this.loop.bind(this) );
+        this.renderer.setAnimationLoop( this.loop.bind( this ) );
     }
+
     loop () {
         this.controls.update();
         this.renderer.render( this.scene, this.camera );
