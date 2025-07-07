@@ -7,7 +7,7 @@ import CameraManager from './managers/CameraManager';
 import configuration from './data/configuration';
 import SceneManager from './managers/SceneManager';
 
-export default class Stage {
+class Stage {
     constructor () {
         this.addRenderer();
         this.addScene();
@@ -80,3 +80,7 @@ export default class Stage {
         this.renderer.render( this.scene, this.camera );
     }
 }
+
+const instancedStage = new Stage();
+
+export default instancedStage;

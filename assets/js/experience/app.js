@@ -1,3 +1,3 @@
-import Stage from './Stage';
+import instancedStage from './Stage';
 
-new Stage();
+console.log(instancedStage);
