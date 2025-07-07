@@ -1,20 +1,20 @@
 import { PerspectiveCamera } from "three";
 import configuration from "../data/configuration";
+import BaseManager from "./BaseManager";
 
-export default class CameraManager {
-    constructor (stage) {
-        this.stage = stage;
-        this._setup();
-    }
+export default class CameraManager extends BaseManager {
     _setup () {
-        this.camera = new PerspectiveCamera(
+        this._camera = new PerspectiveCamera(
             configuration.camera.fov, 
             this.stage.rendererSize.width / this.stage.rendererSize.height, 
             configuration.camera.near, configuration.camera.far);
-        this.camera.position.copy(configuration.camera.position);
+        this._camera.position.copy(configuration.camera.position);
+    }
+    getCamera () {
+        return this._camera;
     }
     resize () {
-        this.camera.aspect = this.stage.rendererSize.width / this.stage.rendererSize.height;
-        this.camera.updateProjectionMatrix();
+        this._camera.aspect = this.stage.rendererSize.width / this.stage.rendererSize.height;
+        this._camera.updateProjectionMatrix();
     } 
 }

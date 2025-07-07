@@ -5,6 +5,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import LightManager from './managers/LightManager';
 import CameraManager from './managers/CameraManager';
 import configuration from './data/configuration';
+import SceneManager from './managers/SceneManager';
 
 export default class Stage {
     constructor () {
@@ -19,7 +20,7 @@ export default class Stage {
         window.addEventListener( 'resize', this.resize.bind( this ) );
     }
     addRenderer () {
-        this.renderer = new WebGLRenderer();
+        this.renderer = new WebGLRenderer( configuration.renderer );
         this.rendererSize = {
             width: window.innerWidth,
             height: window.innerHeight,
@@ -28,11 +29,12 @@ export default class Stage {
         document.body.appendChild( this.renderer.domElement );
     }
     addScene () {
-        this.scene = new Scene();
+        this.sceneManager = new SceneManager( this );
+        this.scene = this.sceneManager.getScene();
     }
     addCamera () {
         this.cameraManager = new CameraManager( this );
-        this.camera = this.cameraManager.camera;
+        this.camera = this.cameraManager.getCamera();
     }
     addControls () {
         this.controls = new OrbitControls( this.camera, this.renderer.domElement );

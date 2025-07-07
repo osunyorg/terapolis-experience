@@ -1,4 +1,4 @@
-import { Vector3, ACESFilmicToneMapping } from "three";
+import { Vector3, ACESFilmicToneMapping } from 'three';
 export default {
     camera: {
         fov: 75,
@@ -15,11 +15,12 @@ export default {
     lights: {
         ambient: {
             intensity: 1,
-            color: "#ffffff",
+            color: '#ffffff',
         },
         directional: {
             intensity: 1,
-            color: "#ffffff",
+            color: '#ffffff',
+            position: new Vector3(1, 5, -1)
         },
     },
     renderer: {
@@ -28,16 +29,15 @@ export default {
         toneMappingExposure: 1.2,
     },
     sceneEnvBackground: {
-        color: 0xefefef,
+        color: 0xCFCFCF,
         enabled: true,
         intensity: 1,
         show: true,
-        transparent: true,
     },
     sceneFog: {
-        color: null, // take background color by default
+        color: 0xCFCFCF,
         enabled: true,
-        far: 300,
+        far: 50,
         near: 0,
     },
 }
