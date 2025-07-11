@@ -6,14 +6,18 @@ import LightManager from './managers/LightManager';
 import CameraManager from './managers/CameraManager';
 import configuration from './data/configuration';
 import SceneManager from './managers/SceneManager';
+import POIManager from './managers/POIManager';
 
 class Stage {
     constructor () {
+        this.objectsToUpdate = [];
+        this.container = document.querySelector( '#experience-container' );
         this.addRenderer();
         this.addScene();
         this.addCamera();
         this.addControls();
         this.addLights();
+        this.addPOI();
         this.resize();
         this.load();
 
@@ -21,12 +25,12 @@ class Stage {
     }
     addRenderer () {
         this.renderer = new WebGLRenderer( configuration.renderer );
-        this.rendererSize = {
+        this.size = {
             width: window.innerWidth,
             height: window.innerHeight,
         };
-        this.renderer.setSize( this.rendererSize.width, this.rendererSize.height );
-        document.body.appendChild( this.renderer.domElement );
+        this.renderer.setSize( this.size.width, this.size.height );
+        this.container.appendChild( this.renderer.domElement );
     }
     addScene () {
         this.sceneManager = new SceneManager( this );
@@ -38,16 +42,24 @@ class Stage {
     }
     addControls () {
         this.controls = new OrbitControls( this.camera, this.renderer.domElement );
+        this.controls.enableDamping = true;
+        this.controls.enableZoom = false;
+        this.controls.maxPolarAngle = Math.PI / 2 - 0.15;
+        this.objectsToUpdate.push( this.controls );
     }
     addLights () {
         this.lightManager = new LightManager( this );
     }
+    addPOI () {
+        this.POIManager = new POIManager( this );
+        this.objectsToUpdate.push( this.POIManager );
+    }
     resize () {
-        this.rendererSize = {
+        this.size = {
             width: window.innerWidth,
             height: window.innerHeight,
         }
-        this.renderer.setSize( this.rendererSize.width, this.rendererSize.height );
+        this.renderer.setSize( this.size.width, this.size.height );
         this.cameraManager.resize();
     }
     load () {
@@ -76,8 +88,9 @@ class Stage {
     }
 
     loop () {
-        this.controls.update();
         this.renderer.render( this.scene, this.camera );
+
+        this.objectsToUpdate.forEach(object => object.update());
     }
 }
 

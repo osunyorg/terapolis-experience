@@ -6,16 +6,13 @@ export default class POIManager extends BaseManager {
     _setup () {
         this.POIs = [];
 
-        POI.forEach(poiData => this._add(poiData));
+        POI.forEach(poiData => this._add( poiData ));
     }
     _add (poiData) {
-        const poi = new PointOfInterest(poiData, this);
-        this.POIs.push(poi);
-
-       
+        const poi = new PointOfInterest( poiData, this );
+        this.POIs.push( poi );
     }
-
-    _update () {
-        this.POIs.forEach(poi => poi.update());
+    update () {
+        this.POIs.forEach( poi => poi.update() );
     }
 }

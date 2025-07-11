@@ -6,7 +6,7 @@ export default class CameraManager extends BaseManager {
     _setup () {
         this._camera = new PerspectiveCamera(
             configuration.camera.fov, 
-            this.stage.rendererSize.width / this.stage.rendererSize.height, 
+            this.stage.size.width / this.stage.size.height, 
             configuration.camera.near, configuration.camera.far);
         this._camera.position.copy(configuration.camera.position);
     }
@@ -14,7 +14,7 @@ export default class CameraManager extends BaseManager {
         return this._camera;
     }
     resize () {
-        this._camera.aspect = this.stage.rendererSize.width / this.stage.rendererSize.height;
+        this._camera.aspect = this.stage.size.width / this.stage.size.height;
         this._camera.updateProjectionMatrix();
     } 
 }

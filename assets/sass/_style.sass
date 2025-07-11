@@ -2,6 +2,53 @@ canvas
     position: fixed
     inset: 0
 
+header
+    nav
+        .nav-level-1
+            display: none !important
 
 footer
     display: none !important
+
+#experience-container
+    position: fixed
+    inset: 0
+    z-index: $zindex-modal + 1
+
+.poi-button
+    border-radius: 50%
+    position: absolute
+    width: 50px
+    height: 50px
+    margin: -25px
+    background: white
+    border: 3px solid black
+    cursor: pointer
+    z-index: 10
+
+.poi-popup
+    position: absolute
+    display: flex
+    border: var(--grid-gutter) solid transparent
+    top: 0
+    left: 0
+    bottom: 0
+    z-index: $zindex-modal
+    transform: translateX(-100%)
+    opacity: 0
+    transition: 0.5s ease-in-out
+    .content
+        position: relative
+        width: columns(8)
+        padding-top: var(--grid-gutter)
+        padding-bottom: var(--grid-gutter)
+        background: var(--color-background)
+    .popup-close
+        @extend .button--small
+        @include icon(close-line, before)
+        position: absolute
+        top: space(3)
+        right: space(3)
+    &.is-opened
+        transform: translateX(0)
+        opacity: 1

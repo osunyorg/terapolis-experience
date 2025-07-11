@@ -1,0 +1,16 @@
+<div id="points-of-interest">
+  {{ with site.GetPage "/pages/points-dinteret" }}
+    {{ range .Pages }}
+      <div class="poi-popup" id="{{ .Params.slug }}">
+        <div class="content">
+          <button class="popup-close" title="Fermer"></button>
+          <div class="container">
+            <h2 class="h1">{{ .Title }}</h2>
+            <h3>{{ .Params.summary | safeHTML }}</h3>
+          </div>
+          {{ partial "contents/list" . }}
+        </div>
+      </div>
+    {{ end }}
+  {{ end }}
+</div>
