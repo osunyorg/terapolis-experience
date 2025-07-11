@@ -16,13 +16,16 @@ footer
     z-index: $zindex-modal + 1
 
 .poi-button
-    border-radius: 50%
+    @extend .button
+    @extend .button--small
+    @include icon('eye-line')
+    width: space(10)
+    height: space(10)
+    line-height: space(10)
+    padding: 0
+    text-align: center
+    margin: space(-5)
     position: absolute
-    width: 50px
-    height: 50px
-    margin: -25px
-    background: white
-    border: 3px solid black
     cursor: pointer
     z-index: 10
 
@@ -40,15 +43,17 @@ footer
     .content
         position: relative
         width: columns(8)
+        border-radius: space(5)
         padding-top: var(--grid-gutter)
         padding-bottom: var(--grid-gutter)
         background: var(--color-background)
     .popup-close
+        @extend .button
         @extend .button--small
         @include icon(close-line, before)
         position: absolute
-        top: space(3)
-        right: space(3)
+        top: space(-3)
+        right: space(-3)
     &.is-opened
         transform: translateX(0)
         opacity: 1
