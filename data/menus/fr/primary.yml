@@ -26,7 +26,28 @@ items:
   target: "/points-dinteret/"
   kind: page
   new_tab: false
-  children: []
+  children:
+  - title: Stockage Batterie
+    target: "/points-dinteret/stockage-batterie/"
+    kind: page
+    new_tab: false
+    children: []
+    path: "/pages/points-dinteret/stockage-batterie"
+    file: content/fr/pages/points-dinteret/stockage-batterie/_index.html
+  - title: Élevage Bovin
+    target: "/points-dinteret/elevage-bovin/"
+    kind: page
+    new_tab: false
+    children: []
+    path: "/pages/points-dinteret/elevage-bovin"
+    file: content/fr/pages/points-dinteret/elevage-bovin/_index.html
+  - title: Élevage Ovin
+    target: "/points-dinteret/elevage-ovin/"
+    kind: page
+    new_tab: false
+    children: []
+    path: "/pages/points-dinteret/elevage-ovin"
+    file: content/fr/pages/points-dinteret/elevage-ovin/_index.html
   path: "/pages/points-dinteret"
   file: content/fr/pages/points-dinteret/_index.html
 
