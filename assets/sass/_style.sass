@@ -10,10 +10,13 @@ header
 footer
     display: none !important
 
+.document-content
+    min-height: 100vh
+
 #experience-container
     position: fixed
     inset: 0
-    z-index: $zindex-modal + 1
+    z-index: 20
 
 .poi-button
     @extend .button
@@ -36,7 +39,7 @@ footer
     top: 0
     left: 0
     bottom: 0
-    z-index: $zindex-modal
+    z-index: $zindex-modal + 1
     transform: translateX(-100%)
     opacity: 0
     transition: 0.5s ease-in-out

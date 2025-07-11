@@ -5,9 +5,6 @@ params:
     position: hero
   search:
     active: true
-  logo:
-    header: ''
-    footer: ''
   home:
     head:
       title: site
