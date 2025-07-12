@@ -1,13 +1,6 @@
 ---
 title: Menu principal
 items:
-- title: Actualités
-  target: "/actualites/"
-  kind: page
-  new_tab: false
-  children: []
-  path: "/posts"
-  file: content/fr/posts/_index.html
 - title: Organisations
   target: "/organisations/"
   kind: page
@@ -22,6 +15,13 @@ items:
   children: []
   path: "/persons"
   file: content/fr/persons/_index.html
+- title: Actualités
+  target: "/actualites/"
+  kind: page
+  new_tab: false
+  children: []
+  path: "/posts"
+  file: content/fr/posts/_index.html
 - title: Points d'intérêt
   target: "/points-dinteret/"
   kind: page
