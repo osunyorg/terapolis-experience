@@ -1,20 +1,6 @@
 ---
 title: Menu principal
 items:
-- title: Organisations
-  target: "/organisations/"
-  kind: page
-  new_tab: false
-  children: []
-  path: "/organizations"
-  file: content/fr/organizations/_index.html
-- title: Actualités
-  target: "/actualites/"
-  kind: page
-  new_tab: false
-  children: []
-  path: "/posts"
-  file: content/fr/posts/_index.html
 - title: Équipe
   target: "/equipe/"
   kind: page
@@ -22,6 +8,20 @@ items:
   children: []
   path: "/persons"
   file: content/fr/persons/_index.html
+- title: Actualités
+  target: "/actualites/"
+  kind: page
+  new_tab: false
+  children: []
+  path: "/posts"
+  file: content/fr/posts/_index.html
+- title: Organisations
+  target: "/organisations/"
+  kind: page
+  new_tab: false
+  children: []
+  path: "/organizations"
+  file: content/fr/organizations/_index.html
 - title: Points d'intérêt
   target: "/points-dinteret/"
   kind: page
@@ -48,6 +48,13 @@ items:
     children: []
     path: "/pages/points-dinteret/elevage-ovin"
     file: content/fr/pages/points-dinteret/elevage-ovin/_index.html
+  - title: Agrivoltaïsme pour la grande culture
+    target: "/points-dinteret/grande-culture/"
+    kind: page
+    new_tab: false
+    children: []
+    path: "/pages/points-dinteret/grande-culture"
+    file: content/fr/pages/points-dinteret/grande-culture/_index.html
   path: "/pages/points-dinteret"
   file: content/fr/pages/points-dinteret/_index.html
 
