@@ -1,7 +1,7 @@
 import { Vector3, ACESFilmicToneMapping } from 'three';
 export default {
     camera: {
-        fov: 75,
+        fov: 50,
         fovMobile: null,
         near: 0.1,
         far: 10000,
@@ -10,6 +10,10 @@ export default {
         pointerFactor: {
             x: Math.PI * 0.03,
             y: Math.PI * 0.03,
+        },
+        distance: {
+            blur: 25,
+            focus: 10
         },
     },
     lights: {

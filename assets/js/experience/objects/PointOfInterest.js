@@ -43,7 +43,11 @@ export default class PointOfInterest {
         this.element.addEventListener('click', this._onClick.bind(this));
     }
     _onClick () {
-        POIContentManager.open(this._data.id);
+        this._stage.cameraManager.focusOn(this._data.position);
+        setTimeout(() => {
+            POIContentManager.open(this._data.id);
+        }, 1200);
+
     }
     update () {
         this._updateDomPosition();

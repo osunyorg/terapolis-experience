@@ -5,6 +5,7 @@
   "author": "osunyorg",
   "license": "MIT",
   "dependencies": {
+    "@tweenjs/tween.js": "^25.0.0",
     "osuny": "./themes/osuny",
     "three": "^0.178.0"
   },

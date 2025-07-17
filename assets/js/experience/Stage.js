@@ -1,7 +1,6 @@
 import { Scene, WebGLRenderer } from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import LightManager from './managers/LightManager';
 import CameraManager from './managers/CameraManager';
 import configuration from './data/configuration';
@@ -15,7 +14,6 @@ class Stage {
         this.addRenderer();
         this.addScene();
         this.addCamera();
-        this.addControls();
         this.addLights();
         this.addPOI();
         this.resize();
@@ -39,13 +37,6 @@ class Stage {
     addCamera () {
         this.cameraManager = new CameraManager( this );
         this.camera = this.cameraManager.getCamera();
-    }
-    addControls () {
-        this.controls = new OrbitControls( this.camera, this.renderer.domElement );
-        this.controls.enableDamping = true;
-        this.controls.enableZoom = false;
-        this.controls.maxPolarAngle = Math.PI / 2 - 0.15;
-        this.objectsToUpdate.push( this.controls );
     }
     addLights () {
         this.lightManager = new LightManager( this );
