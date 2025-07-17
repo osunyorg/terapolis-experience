@@ -2,7 +2,7 @@ import { Vector3 } from "three";
 
 export default [
     {
-        id: "stockage-batterie",
+        id: "grande-culture",
         position: new Vector3(10, 4, 5)
     },
 
