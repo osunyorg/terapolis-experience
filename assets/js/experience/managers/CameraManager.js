@@ -21,6 +21,9 @@ export default class CameraManager extends BaseManager {
         this._addControls();
         this._addAnimationState();
 
+        this.stage.objectsToUpdate.push(this);
+
+
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 this.stopFocus();
@@ -31,10 +34,9 @@ export default class CameraManager extends BaseManager {
     _addAnimationState () {
         this._animationState = {
             target: this._target,
-            distance: this.controls.maxDistance
+            distance: configuration.camera.distance.blur
         };
-        this._animationTween = new Tween( this._animationState );
-        this.stage.objectsToUpdate.push(this._animationTween);
+        this._tween = new Tween( this._animationState );
     }
     _addControls () {
         this.controls = new OrbitControls( this._camera, this.stage.renderer.domElement );
@@ -43,7 +45,6 @@ export default class CameraManager extends BaseManager {
         this.controls.maxPolarAngle = Math.PI / 2 - 0.15;
         this.controls.maxDistance = configuration.camera.distance.blur;
         this.controls.minDistance = configuration.camera.distance.blur;
-        this.stage.objectsToUpdate.push( this.controls );
     }
     getCamera () {
         return this._camera;
@@ -65,7 +66,8 @@ export default class CameraManager extends BaseManager {
         this._setFocus({x: 0, y: 0, z: 0}, configuration.camera.distance.blur);
     }
     _setFocus (position, distance) {
-        this._animationTween
+        this._tween = new Tween( this._animationState );
+        this._tween
             .to({
                 target: {
                     x: position.x,
@@ -85,6 +87,7 @@ export default class CameraManager extends BaseManager {
             .start();
     }
     update () {
-        this._animationTween.update();
+        this._tween.update();
+        this.controls.update();
     }
 }
