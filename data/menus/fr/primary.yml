@@ -1,13 +1,6 @@
 ---
 title: Menu principal
 items:
-- title: Actualités
-  target: "/actualites/"
-  kind: page
-  new_tab: false
-  children: []
-  path: "/posts"
-  file: content/fr/posts/_index.html
 - title: Organisations
   target: "/organisations/"
   kind: page
@@ -15,6 +8,13 @@ items:
   children: []
   path: "/organizations"
   file: content/fr/organizations/_index.html
+- title: Actualités
+  target: "/actualites/"
+  kind: page
+  new_tab: false
+  children: []
+  path: "/posts"
+  file: content/fr/posts/_index.html
 - title: Équipe
   target: "/equipe/"
   kind: page
