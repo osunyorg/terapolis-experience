@@ -23,14 +23,6 @@ export default class CameraManager extends BaseManager {
         this._addAnimationState();
 
         this.stage.objectsToUpdate.push(this);
-
-
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                this.stopFocus();
-                console.log('ok')
-            }
-        })
     }
     _addAnimationState () {
         this._animationState = {
@@ -62,7 +54,7 @@ export default class CameraManager extends BaseManager {
         this._setFocus(position, configuration.camera.distance.focus);
         // this._camera.setViewOffset(this.stage.size.width*1.5, this.stage.size.height, 0, 0, this.stage.size.width, this.stage.size.height)
     }
-    stopFocus () {
+    blur () {
         this.state.isFocusing = false;
         this._setFocus({x: 0, y: 0, z: 0}, configuration.camera.distance.blur);
     }

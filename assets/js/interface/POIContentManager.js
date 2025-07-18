@@ -13,7 +13,9 @@ class POIContentManager {
     }
     open (id) {
         this.popins.forEach(popin => {
-            popin.toggle(false);
+            if (popin.state.opened) {
+                popin.toggle(false);
+            }
         });
 
         this.popins.forEach(popin => {

@@ -6,9 +6,12 @@ import CameraManager from './managers/CameraManager';
 import configuration from './data/configuration';
 import SceneManager from './managers/SceneManager';
 import POIManager from './managers/POIManager';
+import { EventEmitter } from 'events';
+import events from './data/events';
 
-class Stage {
+class Stage extends EventEmitter {
     constructor () {
+        super();
         this.objectsToUpdate = [];
         this.container = document.querySelector( '#experience-container' );
         this.addRenderer();
@@ -18,8 +21,14 @@ class Stage {
         this.addPOI();
         this.resize();
         this.load();
+        this.listen();
 
         window.addEventListener( 'resize', this.resize.bind( this ) );
+    }
+    listen () {
+        this.on(events.POI_CLOSE, () => {
+            this.cameraManager.blur()
+        });
     }
     addRenderer () {
         this.renderer = new WebGLRenderer( configuration.renderer );
