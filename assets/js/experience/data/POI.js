@@ -18,11 +18,11 @@ export default [
 
     {
         id: "stockage-batterie",
-        position: new Vector3(8, 4, 3)
+        position: new Vector3(10, 2, 10)
     },
 
     {
         id: "territoire",
-        position: new Vector3(3, 4, 1)
+        position: new Vector3(3, 1, 1)
     },
 ]
