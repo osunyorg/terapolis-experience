@@ -15,4 +15,14 @@ export default [
         id: "elevage-ovin",
         position: new Vector3(9, 2, -9)
     },
+
+    {
+        id: "stockage-batterie",
+        position: new Vector3(8, 4, 3)
+    },
+
+    {
+        id: "territoire",
+        position: new Vector3(3, 4, 1)
+    },
 ]
