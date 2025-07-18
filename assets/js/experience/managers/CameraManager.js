@@ -1,4 +1,4 @@
-import { PerspectiveCamera, Vector3 } from "three";
+import { PerspectiveCamera, Vector3, Matrix4, Frustum } from "three";
 import configuration from "../data/configuration";
 import BaseManager from "./BaseManager";
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -13,6 +13,7 @@ export default class CameraManager extends BaseManager {
         );
         this._camera.position.copy( configuration.camera.position );
         this._target = new Vector3( 0, 0, 0 );
+        this._frustum = new Frustum();
 
         this.state = {
             isFocusing: false
@@ -64,6 +65,16 @@ export default class CameraManager extends BaseManager {
     stopFocus () {
         this.state.isFocusing = false;
         this._setFocus({x: 0, y: 0, z: 0}, configuration.camera.distance.blur);
+    }
+    isInFrustum ( position ) {
+        const matrix = new Matrix4().multiplyMatrices(
+            this._camera.projectionMatrix,
+            this._camera.matrixWorldInverse
+        )
+
+        this._frustum.setFromProjectionMatrix( matrix );
+
+        return this._frustum.containsPoint( position );
     }
     _setFocus (position, distance) {
         this._tween = new Tween( this._animationState );
