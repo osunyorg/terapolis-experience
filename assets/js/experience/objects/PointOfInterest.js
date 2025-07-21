@@ -21,6 +21,7 @@ export default class PointOfInterest {
     _createDomElement () {
         this.element = document.createElement('button');
         this.element.classList.add('poi-button');
+        this.element.setAttribute('type', 'button');
         this._stage.container.append(this.element);
 
         this._bindClick();

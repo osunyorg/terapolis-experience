@@ -102,3 +102,19 @@ footer
         width: columns(8)
     .container
         padding: space(5)
+        position: relative
+        padding-left: space(30)
+        &::after
+            content: ''
+            position: absolute
+            left: 0%
+            top: 50%
+            width: space(50)
+            height: space(50)
+            background-color: $color-text-alt
+            background-image: url(/assets/images/poly.png)
+            background-position: top 10%
+            background-size: 120%
+            border-radius: 50%
+            border: space(2) solid white
+            transform: translate(-50%, -50%)
