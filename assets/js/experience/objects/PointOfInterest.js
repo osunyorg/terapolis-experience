@@ -31,7 +31,7 @@ export default class PointOfInterest {
     _onClick () {
         this._stage.cameraManager.focusOn(this._data.position);
         setTimeout(() => {
-            POIContentManager.open(this._data.id);
+            POIContentManager.open(this._data.introductionId);
         }, 1200);
     }
     _updateDomPosition () {

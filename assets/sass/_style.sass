@@ -34,7 +34,17 @@ footer
     cursor: pointer
     z-index: 10
 
+%popup
+    opacity: 0
+    transition: 0.5s ease-in-out
+    &:not(.is-opened)
+        pointer-events: none
+    &.is-opened
+        transform: translate(0, 0)
+        opacity: 1
+
 .poi-popup
+    @extend %popup
     position: absolute
     display: flex
     border: var(--grid-gutter) solid transparent
@@ -48,7 +58,7 @@ footer
     .content
         position: relative
         width: columns(8)
-        border-radius: space(5)
+        border-radius: $border-radius
         padding-top: var(--grid-gutter)
         padding-bottom: var(--grid-gutter)
         background: var(--color-background)
@@ -62,9 +72,6 @@ footer
         top: space(-3)
         right: space(-3)
         z-index: 2
-    &.is-opened
-        transform: translateX(0)
-        opacity: 1
 
 .poi-popup
     .poi-title
@@ -77,3 +84,21 @@ footer
             .slider figure picture img
                 max-width: columns(7)
                 object-fit: contain
+
+.poi-introduction-popup
+    @extend %popup
+    position: fixed
+    bottom: var(--grid-gutter)
+    left: 0
+    right: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    z-index: $zindex-modal + 1
+    transform: translateY(100%)
+    .content
+        background: var(--color-background)
+        border-radius: $border-radius
+        width: columns(8)
+    .container
+        padding: space(5)

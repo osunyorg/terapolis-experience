@@ -1,0 +1,11 @@
+{{ partial "experience/poi-introduction.html" . }}
+
+<div class="poi-popup" id="{{ .Params.slug }}">
+  <button class="popup-close" title="Fermer"></button>
+  <div class="content">
+    <div class="container">
+      <h2 class="h1 poi-title">{{ .Title }}</h2>
+    </div>
+    {{ partial "contents/list" . }}
+  </div>
+</div>

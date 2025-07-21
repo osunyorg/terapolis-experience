@@ -1,5 +1,5 @@
-import events from "js/experience/data/events";
-import instancedStage from "js/experience/Stage";
+import events from 'js/experience/data/events';
+import instancedStage from 'js/experience/Stage';
 
 export default class POIPopup extends window.osuny.Popup {
     constructor(element) {
