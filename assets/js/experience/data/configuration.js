@@ -36,7 +36,7 @@ export default {
         toneMappingExposure: 1.2,
     },
     shadow: {
-        enabled: false,
+        enabled: true,
         type: PCFSoftShadowMap
     },
     sceneEnvBackground: {
@@ -51,4 +51,9 @@ export default {
         far: 50,
         near: 30,
     },
+    sun: {
+        speed: 0.0005,
+        distance: 50,
+        intensity: 5
+    }
 }

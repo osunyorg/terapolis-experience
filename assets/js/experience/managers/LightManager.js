@@ -1,4 +1,4 @@
-import { AmbientLight,CameraHelper,DirectionalLight, PointLight } from 'three';
+import { AmbientLight,CameraHelper,Color,DirectionalLight, PointLight } from 'three';
 import configuration from '../data/configuration';
 import BaseManager from './BaseManager';
 
@@ -14,6 +14,7 @@ export default class LightManager extends BaseManager {
         } else {
             this.addDirectional();
         }
+        this.addDirectional();
 
         this.lights.forEach(
             light => this.stage.scene.add(light)
@@ -27,13 +28,13 @@ export default class LightManager extends BaseManager {
     }
 
     addDirectional () {
-        const directionalLight = new DirectionalLight( configuration.lights.directional );
-        directionalLight.position.copy( configuration.lights.directional.position );
-        this.lights.push(directionalLight);
+        this.directionalLight = new DirectionalLight( configuration.lights.directional );
+        this.directionalLight.position.copy( configuration.lights.directional.position );
+        this.lights.push(this.directionalLight);
     }
 
     addSun () {
-        this.sun = new PointLight( 0xffffff, 5, 100, 0.2 );
+        this.sun = new PointLight( 0xFFFFFF, 5, 100, 0.2 );
         this.sun.position.set( 0, 30, 4 );
         this.sun.castShadow = true; // default false
 
@@ -50,6 +51,13 @@ export default class LightManager extends BaseManager {
     }
 
     update ( tick ) {
-        this.sun.position.x = Math.sin(tick / 1000) * 10;
+        this.sun.position.x = Math.sin( tick * configuration.sun.speed ) * configuration.sun.distance;
+        this.sun.position.y = (Math.cos( tick * configuration.sun.speed ) * configuration.sun.distance);
+        this.sun.intensity = Math.max(0, this.sun.position.y / configuration.sun.distance) * configuration.sun.intensity;
+        // this.sun.color.r = this.sun.intensity / configuration.sun.intensity;
+        this.sun.color.g = (this.sun.intensity / configuration.sun.intensity) * 0.25;
+        this.sun.color.b = (this.sun.intensity / configuration.sun.intensity) * 0.5;
+        this.directionalLight.color = this.sun.color;
+        console.log(this.sun.color)
     }
 }
