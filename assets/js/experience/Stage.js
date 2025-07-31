@@ -69,7 +69,7 @@ class Stage extends EventEmitter {
         loader.setDRACOLoader( dracoLoader );
 
         loader.load(
-            '/assets/3D/terrain.glb',
+            '/assets/3D/terrain_1.glb',
             ( gltf ) => {
                 this.scene.add( gltf.scene );
                 this.onReady();
