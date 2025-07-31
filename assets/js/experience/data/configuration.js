@@ -5,15 +5,15 @@ export default {
         fovMobile: null,
         near: 0.1,
         far: 10000,
-        position: new Vector3(5, 18, 10), //new Vector3(0, 0.5, 3.5),
+        position: new Vector3(5, 15, 10), //new Vector3(0, 0.5, 3.5),
         isControlable: true,
         pointerFactor: {
             x: Math.PI * 0.03,
             y: Math.PI * 0.03,
         },
         distance: {
-            blur: 25,
-            focus: 10
+            blur: 20,
+            focus: 7
         },
     },
     lights: {
@@ -33,15 +33,15 @@ export default {
         toneMappingExposure: 1.2,
     },
     sceneEnvBackground: {
-        color: 0xCFCFCF,
+        color: 0x526847,
         enabled: true,
         intensity: 1,
         show: true,
     },
     sceneFog: {
-        color: 0xCFCFCF,
+        color: 0x526847,
         enabled: true,
         far: 50,
-        near: 0,
+        near: 30,
     },
 }
