@@ -6,8 +6,8 @@ export default class SceneManager extends BaseManager {
     _setup () {
         this._scene = new Scene();
 
-        this._backgroundColor = new Color( configuration.sceneEnvBackground.color )
-        this._scene.background = this._backgroundColor
+        this._backgroundColor = new Color( configuration.sceneEnvBackground.color );
+        this._scene.background = this._backgroundColor;
 
         // Set fog
         if ( configuration.sceneFog.enabled ) {

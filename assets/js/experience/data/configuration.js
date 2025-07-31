@@ -15,6 +15,9 @@ export default {
             blur: 20,
             focus: 7
         },
+        orbit: {
+            maxPolarAngle: Math.PI / 2 - 0.35
+        }
     },
     lights: {
         ambient: {

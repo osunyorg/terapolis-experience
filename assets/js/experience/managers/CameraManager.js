@@ -35,7 +35,7 @@ export default class CameraManager extends BaseManager {
         this.controls = new OrbitControls( this._camera, this.stage.renderer.domElement );
         this.controls.enableDamping = true;
         this.controls.enableZoom = false;
-        this.controls.maxPolarAngle = Math.PI / 2 - 0.15;
+        this.controls.maxPolarAngle = configuration.camera.orbit.maxPolarAngle;
         this.controls.maxDistance = configuration.camera.distance.blur;
         this.controls.minDistance = configuration.camera.distance.blur;
     }

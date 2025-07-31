@@ -7,11 +7,12 @@ export default class LightManager extends BaseManager {
         this.lights = [];
 
         this.addAmbient();
-        this.addDirectional();
 
         if (configuration.shadow.enabled) {
             this.addSun();
             this.stage.objectsToUpdate.push( this );
+        } else {
+            this.addDirectional();
         }
 
         this.lights.forEach(
@@ -28,7 +29,7 @@ export default class LightManager extends BaseManager {
     addDirectional () {
         const directionalLight = new DirectionalLight( configuration.lights.directional );
         directionalLight.position.copy( configuration.lights.directional.position );
-        // this.lights.push(directionalLight);
+        this.lights.push(directionalLight);
     }
 
     addSun () {
