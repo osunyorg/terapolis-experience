@@ -1,4 +1,4 @@
-import { Scene, WebGLRenderer } from 'three';
+import { PCFSoftShadowMap, Scene, WebGLRenderer } from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import LightManager from './managers/LightManager';
@@ -54,6 +54,22 @@ class Stage extends EventEmitter {
         this.POIManager = new POIManager( this );
         this.objectsToUpdate.push( this.POIManager );
     }
+    addShadow () {
+        console.log(this.mainObject)
+
+        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = configuration.shadow.type;
+
+        this.mainObject.children.forEach( ( child, index ) => {
+            if ( child.name.includes( "Ground" ) ) {
+                console.log(child)
+                child.receiveShadow = true;
+            } else {
+                child.castShadow = true;
+                child.receiveShadow = false;
+            }
+        } );
+    }
     resize () {
         this.size = {
             width: window.innerWidth,
@@ -71,6 +87,7 @@ class Stage extends EventEmitter {
         loader.load(
             '/assets/3D/terrain_1.glb',
             ( gltf ) => {
+                this.mainObject = gltf.scene;
                 this.scene.add( gltf.scene );
                 this.onReady();
             },
@@ -85,12 +102,17 @@ class Stage extends EventEmitter {
 
     onReady () {
         this.renderer.setAnimationLoop( this.loop.bind( this ) );
+
+        if (configuration.shadow.enabled) {
+            this.addShadow();
+        }
     }
 
     loop () {
+        const tick = performance.now();
         this.renderer.render( this.scene, this.camera );
 
-        this.objectsToUpdate.forEach(object => object.update());
+        this.objectsToUpdate.forEach(object => object.update(tick));
     }
 }
 
