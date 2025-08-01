@@ -8,19 +8,24 @@ import SceneManager from './managers/SceneManager';
 import POIManager from './managers/POIManager';
 import { EventEmitter } from 'events';
 import events from './data/events';
+import AssetsManager from './managers/AssetsManager';
+import SkyBox from './objects/SkyBox';
 
 class Stage extends EventEmitter {
     constructor () {
         super();
         this.objectsToUpdate = [];
         this.container = document.querySelector( '#experience-container' );
+
         this.addRenderer();
         this.addScene();
         this.addCamera();
         this.addLights();
         this.addPOI();
+
+        this.assets = new AssetsManager(this.onAssetsLoaded.bind(this));
+
         this.resize();
-        this.load();
         this.listen();
 
         window.addEventListener( 'resize', this.resize.bind( this ) );
@@ -54,9 +59,8 @@ class Stage extends EventEmitter {
         this.POIManager = new POIManager( this );
         this.objectsToUpdate.push( this.POIManager );
     }
-    addShadow () {
-        console.log(this.mainObject)
 
+    addShadow () {
         this.renderer.shadowMap.enabled = true;
         this.renderer.shadowMap.type = configuration.shadow.type;
 
@@ -70,6 +74,7 @@ class Stage extends EventEmitter {
             }
         } );
     }
+
     resize () {
         this.size = {
             width: window.innerWidth,
@@ -78,26 +83,21 @@ class Stage extends EventEmitter {
         this.renderer.setSize( this.size.width, this.size.height );
         this.cameraManager.resize();
     }
-    load () {
-        const loader = new GLTFLoader();
-        const dracoLoader = new DRACOLoader();
-        dracoLoader.setDecoderPath( '/assets/loader/draco/' );
-        loader.setDRACOLoader( dracoLoader );
 
-        loader.load(
-            '/assets/3D/terrain_1.glb',
-            ( gltf ) => {
-                this.mainObject = gltf.scene;
-                this.scene.add( gltf.scene );
-                this.onReady();
-            },
-            ( xhr ) => {
-                console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-            },
-            ( error ) => {
-                console.log( error );
-            }
-        );
+    onAssetsLoaded () {
+        this.addTerrain();
+        this.addSky();
+        this.onReady();
+    }
+
+    addTerrain () {
+        const terrain = this.assets.get('terrain');
+        this.mainObject = terrain.data;
+        this.scene.add( terrain.data );
+    }
+
+    addSky () {
+        this.skyBox = new SkyBox(this);
     }
 
     onReady () {

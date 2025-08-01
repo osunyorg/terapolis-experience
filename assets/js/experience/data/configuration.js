@@ -12,11 +12,12 @@ export default {
             y: Math.PI * 0.03,
         },
         distance: {
-            blur: 20,
+            blur: 18, // 20
             focus: 7
         },
         orbit: {
             maxPolarAngle: Math.PI / 2 - 0.35
+            // maxPolarAngle: Math.PI
         }
     },
     lights: {
@@ -36,24 +37,32 @@ export default {
         toneMappingExposure: 1.2,
     },
     shadow: {
-        enabled: true,
+        enabled: false,
         type: PCFSoftShadowMap
     },
     sceneEnvBackground: {
-        color: 0x526847,
+        color: 0x06B0E5,
         enabled: true,
         intensity: 1,
         show: true,
     },
     sceneFog: {
-        color: 0x526847,
+        color: 0x06B0E5,
         enabled: true,
-        far: 50,
+        far: 400,
         near: 30,
     },
     sun: {
         speed: 0.0005,
-        distance: 50,
-        intensity: 5
-    }
+        distance: 50, // 50
+        intensity: 5,
+        startColor: 0xFF3224,
+        endColor: 0xFFFF81
+    },
+    skyBox: {
+        enabled: true,
+        toneMapped: true,
+        size: 100,
+        color: 0x06B0E5
+    } 
 }
