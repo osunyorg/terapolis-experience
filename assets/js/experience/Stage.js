@@ -1,4 +1,4 @@
-import { PCFSoftShadowMap, Scene, WebGLRenderer } from 'three';
+import { Clock, PCFSoftShadowMap, Scene, WebGLRenderer } from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import LightManager from './managers/LightManager';
@@ -10,6 +10,7 @@ import { EventEmitter } from 'events';
 import events from './data/events';
 import AssetsManager from './managers/AssetsManager';
 import SkyBox from './objects/SkyBox';
+import World from './objects/World';
 
 class Stage extends EventEmitter {
     constructor () {
@@ -23,7 +24,7 @@ class Stage extends EventEmitter {
         this.addLights();
         this.addPOI();
 
-        this.assets = new AssetsManager(this.onAssetsLoaded.bind(this));
+        this.assets = new AssetsManager( this.onAssetsLoaded.bind( this ) );
 
         this.resize();
         this.listen();
@@ -31,8 +32,8 @@ class Stage extends EventEmitter {
         window.addEventListener( 'resize', this.resize.bind( this ) );
     }
     listen () {
-        this.on(events.POI_CLOSE, () => {
-            this.cameraManager.blur()
+        this.on( events.POI_CLOSE, () => {
+            this.cameraManager.blur();
         });
     }
     addRenderer () {
@@ -43,6 +44,8 @@ class Stage extends EventEmitter {
         };
         this.renderer.setSize( this.size.width, this.size.height );
         this.container.appendChild( this.renderer.domElement );
+
+        this.clock = new Clock();
     }
     addScene () {
         this.sceneManager = new SceneManager( this );
@@ -85,15 +88,13 @@ class Stage extends EventEmitter {
     }
 
     onAssetsLoaded () {
-        this.addTerrain();
+        this.addWorld();
         this.addSky();
         this.onReady();
     }
 
-    addTerrain () {
-        const terrain = this.assets.get('terrain');
-        this.mainObject = terrain.data;
-        this.scene.add( terrain.data );
+    addWorld () {
+        this.world = new World( this );
     }
 
     addSky () {
@@ -109,10 +110,12 @@ class Stage extends EventEmitter {
     }
 
     loop () {
-        const tick = performance.now();
+        const tick = this.clock.getDelta();
+        // const tick = window.performance.now();
+
         this.renderer.render( this.scene, this.camera );
 
-        this.objectsToUpdate.forEach(object => object.update(tick));
+        this.objectsToUpdate.forEach(object => object.update( tick ));
     }
 }
 

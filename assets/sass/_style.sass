@@ -104,6 +104,8 @@ footer
         padding: space(5)
         position: relative
         padding-left: space(30)
+        > * + *
+            margin-top: $spacing-3
         &::after
             content: ''
             position: absolute
@@ -118,3 +120,7 @@ footer
             border-radius: 50%
             border: space(2) solid white
             transform: translate(-50%, -50%)
+
+html.has-modal-opened body::after
+    display: none
+

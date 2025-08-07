@@ -50,7 +50,7 @@ export default class AssetsManager {
         loader.load(
             asset.src,
             ( gltf ) => {
-                asset.data = gltf.scene;
+                asset.data = gltf;
                 this._onAssetLoaded();
             },
             this._onLoading,

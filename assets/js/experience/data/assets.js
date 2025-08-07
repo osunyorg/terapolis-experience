@@ -1,7 +1,7 @@
 export default [
     {
         id: 'terrain',
-        src: '/assets/3D/terrain_1.glb',
+        src: '/assets/3D/anim-windturbine.glb',
         data: null,
         loader: 'GLTF'
     },
