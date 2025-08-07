@@ -46,10 +46,10 @@ export default class LightManager extends BaseManager {
         if ( configuration.shadow.enabled ) {
             this.sun.castShadow = true; // default false
             //Set up shadow properties for the this.sun
-            this.sun.shadow.mapSize.width = 512; // default
-            this.sun.shadow.mapSize.height = 512; // default
-            this.sun.shadow.camera.near = 0.5; // default
-            this.sun.shadow.camera.far = 1000; // default
+            this.sun.shadow.mapSize.width = configuration.shadow.size; // default
+            this.sun.shadow.mapSize.height = configuration.shadow.size; // default
+            this.sun.shadow.camera.near = 0.1; // default
+            this.sun.shadow.camera.far = 100; // default
             // this.sun.shadow.blurSamples = 10;
             const helper = new CameraHelper( this.sun.shadow.camera );
             this.stage.scene.add( helper );

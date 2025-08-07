@@ -12,7 +12,7 @@ export default {
             y: Math.PI * 0.03,
         },
         distance: {
-            blur: 18, // 20
+            blur: 20, // 20
             focus: 7
         },
         orbit: {
@@ -38,7 +38,8 @@ export default {
     },
     shadow: {
         enabled: false,
-        type: PCFSoftShadowMap
+        type: PCFSoftShadowMap,
+        size: 2048
     },
     sceneEnvBackground: {
         color: 0x06B0E5,
