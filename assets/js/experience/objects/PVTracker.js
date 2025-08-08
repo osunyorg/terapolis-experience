@@ -9,6 +9,7 @@ export default class PVTracker {
             roughness: 0.0,
             metalness: 0.7,
             envMapIntensity: 1.0,
+            color: 0xAAAAAA,
             envMap: envMap
         });
         this.mesh.material.needsUpdate = true;

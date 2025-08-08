@@ -43,6 +43,11 @@ class Stage extends EventEmitter {
             height: window.innerHeight,
         };
         this.renderer.setSize( this.size.width, this.size.height );
+
+        this.renderer.toneMapping = configuration.renderer.toneMapping;
+        this.renderer.toneMappingExposure = configuration.renderer.toneMappingExposure;
+        this.renderer.physicallyCorrectLights = true;
+        
         this.container.appendChild( this.renderer.domElement );
 
         this.clock = new Clock();

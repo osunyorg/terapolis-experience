@@ -23,18 +23,18 @@ export default {
     lights: {
         ambient: {
             intensity: 0.5,
-            color: '#ffffff',
+            color: '#000000',
         },
         directional: {
             intensity: 0.5,
-            color: '#ffffff',
+            color: '#000000',
             position: new Vector3(1, 5, -1)
         },
     },
     renderer: {
         antialias: true,
         toneMapping: ACESFilmicToneMapping, // this Tone mapping is used for more realistic colors
-        toneMappingExposure: 1.2,
+        toneMappingExposure: 0.8,
     },
     sceneEnvBackground: {
         color: 0x06B0E5,
@@ -49,9 +49,9 @@ export default {
         near: 30,
     },
     sun: {
-        speed: 0.0015, // 0.0005
+        speed: 0.0005, // 0.0005
         distance: 50, // 50
-        intensity: 8,
+        intensity: 10,
         startColor: 0xFF3224,
         endColor: 0xFFFF81
     },

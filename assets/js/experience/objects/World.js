@@ -3,6 +3,7 @@ import configuration from "../data/configuration";
 import AnimationsManager from "../managers/AnimationsManager";
 import BaseObject from "./BaseObject";
 import PVTracker from "./PVTracker";
+import Sun from "./Sun";
 
 export default class World extends BaseObject {
     _setup () {
@@ -10,15 +11,22 @@ export default class World extends BaseObject {
         this.content = model.data.scene;
         this.clips = model.data.animations;
         this.stage.scene.add( this.content );
-        this.stage.objectsToUpdate.push( this );
-        this.addAnimations();
 
+        this.addAnimations();
+        this.addSun();
+        
         if (configuration.shadow.enabled) {
             this.addShadow();
         }
-
+        
         this.setEnvMap();
         this.setTrackers();
+
+        this.stage.objectsToUpdate.push( this );
+    }
+
+    addSun () {
+        this.sun = new Sun( this.stage );
     }
 
     addAnimations () {
@@ -27,7 +35,7 @@ export default class World extends BaseObject {
 
     addShadow () {
         this.content.children.forEach( ( child, index ) => {
-            if ( child.name.includes( "Ground" ) ) {
+            if ( child.name.includes( "Plane" ) ) {
                 console.log(child)
                 child.receiveShadow = true;
             } else {
@@ -60,6 +68,7 @@ export default class World extends BaseObject {
 
     update ( tick, delta ) {
         this.animationManager.update( delta );
+        this.sun.update(tick);
         this.pvTrackers.forEach(tracker => tracker.update( tick ));
     }
 }
