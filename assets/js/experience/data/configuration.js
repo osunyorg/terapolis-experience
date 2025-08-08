@@ -1,4 +1,4 @@
-import { Vector3, ACESFilmicToneMapping, PCFSoftShadowMap, VSMShadowMap, PCFShadowMap } from 'three';
+import { Vector3, ACESFilmicToneMapping, PCFSoftShadowMap, VSMShadowMap, PCFShadowMap, ReinhardToneMapping, CineonToneMapping, NoToneMapping } from 'three';
 export default {
     camera: {
         fov: 50,
@@ -33,7 +33,7 @@ export default {
     },
     renderer: {
         antialias: true,
-        toneMapping: ACESFilmicToneMapping, // this Tone mapping is used for more realistic colors
+        toneMapping: NoToneMapping, // this Tone mapping is used for more realistic colors
         toneMappingExposure: 0.8,
     },
     sceneEnvBackground: {
