@@ -17,8 +17,7 @@ export default class PVTracker {
     }
 
     update ( tick, delta ) {
-
-        this.mesh.rotation.x = Math.sin( tick * configuration.sun.speed ) * 0.4
+        // this.mesh.rotation.x = Math.sin( tick * configuration.sun.speed ) * 0.4
         // this.mesh.rotation.z += 0.01
         // this.mesh.lookAt(this.sun.position);
     }
