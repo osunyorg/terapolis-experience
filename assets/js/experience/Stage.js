@@ -110,12 +110,12 @@ class Stage extends EventEmitter {
     }
 
     loop () {
-        const tick = this.clock.getDelta();
-        // const tick = window.performance.now();
+        const delta = this.clock.getDelta();
+        const tick = window.performance.now();
 
         this.renderer.render( this.scene, this.camera );
 
-        this.objectsToUpdate.forEach(object => object.update( tick ));
+        this.objectsToUpdate.forEach(object => object.update( tick, delta ));
     }
 }
 
