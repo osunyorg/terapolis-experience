@@ -20,9 +20,9 @@ class Stage extends EventEmitter {
 
         this.addRenderer();
         this.addScene();
-        this.addCamera();
         this.addLights();
         this.addPOI();
+        this.addCamera();
 
         this.assets = new AssetsManager( this.onAssetsLoaded.bind( this ) );
 
@@ -98,9 +98,7 @@ class Stage extends EventEmitter {
     loop () {
         const delta = this.clock.getDelta();
         const tick = window.performance.now();
-
         this.renderer.render( this.scene, this.camera );
-
         this.objectsToUpdate.forEach(object => object.update( tick, delta ));
     }
 }

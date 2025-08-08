@@ -1,6 +1,8 @@
+import { EquirectangularReflectionMapping, SRGBColorSpace } from "three";
 import configuration from "../data/configuration";
 import AnimationsManager from "../managers/AnimationsManager";
 import BaseObject from "./BaseObject";
+import PVTracker from "./PVTracker";
 
 export default class World extends BaseObject {
     _setup () {
@@ -14,6 +16,9 @@ export default class World extends BaseObject {
         if (configuration.shadow.enabled) {
             this.addShadow();
         }
+
+        this.setEnvMap();
+        this.setTrackers();
     }
 
     addAnimations () {
@@ -32,8 +37,29 @@ export default class World extends BaseObject {
         } );
     }
 
+    setEnvMap () {
+        // Set envmap
+        const envMapAsset = this.stage.assets.get('environment-1');
+        const envMap = envMapAsset.data;
+        envMap.mapping = EquirectangularReflectionMapping;
+        envMap.colorSpace = SRGBColorSpace;
+
+        this.stage.scene.environment = envMapAsset.data;
+    }
+
+    setTrackers () {
+        const name = "PV_Tracker";
+        const sun = this.stage.lightManager.sun;
+        this.pvTrackers = [];
+        this.content.children.forEach( ( child, index ) => {
+            if ( child.name.includes( name ) ) {
+                this.pvTrackers.push(new PVTracker(child, this.stage.scene.environment, sun));
+            }
+        } );
+    }
 
     update ( tick, delta ) {
         this.animationManager.update( delta );
+        this.pvTrackers.forEach(tracker => tracker.update( tick ));
     }
 }

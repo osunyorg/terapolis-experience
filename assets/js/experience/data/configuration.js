@@ -5,7 +5,7 @@ export default {
         fovMobile: null,
         near: 0.1,
         far: 10000,
-        position: new Vector3(0, 15, 10), //new Vector3(0, 0.5, 3.5),
+        position: new Vector3(0, 15, 14), //new Vector3(0, 0.5, 3.5),
         isControlable: true,
         pointerFactor: {
             x: Math.PI * 0.03,
@@ -22,11 +22,11 @@ export default {
     },
     lights: {
         ambient: {
-            intensity: 1,
+            intensity: 0.5,
             color: '#ffffff',
         },
         directional: {
-            intensity: 1,
+            intensity: 0.5,
             color: '#ffffff',
             position: new Vector3(1, 5, -1)
         },
@@ -49,9 +49,9 @@ export default {
         near: 30,
     },
     sun: {
-        speed: 0.0005,
+        speed: 0.0015, // 0.0005
         distance: 50, // 50
-        intensity: 5,
+        intensity: 8,
         startColor: 0xFF3224,
         endColor: 0xFFFF81
     },
