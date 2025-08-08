@@ -55,7 +55,6 @@ export default class LightManager extends BaseManager {
             this.stage.scene.add( helper );
         }
         this.lights.push( this.sun );
-
     }
 
     setColors (color) {
@@ -69,7 +68,7 @@ export default class LightManager extends BaseManager {
         // const progression = (1 + Math.sin( tick * configuration.sun.speed ) ) / 2;
         // const progression = 1 - (tick *  configuration.sun.speed / 4 % 1) //sawtooth
         const progression = Math.max(0, Math.cos( tick * configuration.sun.speed ));
-        this.sun.position.x = Math.sin( tick * configuration.sun.speed ) * configuration.sun.distance;
+        this.sun.position.x = Math.sin( tick * configuration.sun.speed ) * -configuration.sun.distance;
         this.sun.position.y = progression * configuration.sun.distance;
         this.sun.intensity = progression * configuration.sun.intensity;
 

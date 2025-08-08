@@ -5,7 +5,7 @@ export default {
         fovMobile: null,
         near: 0.1,
         far: 10000,
-        position: new Vector3(5, 15, 10), //new Vector3(0, 0.5, 3.5),
+        position: new Vector3(0, 15, 10), //new Vector3(0, 0.5, 3.5),
         isControlable: true,
         pointerFactor: {
             x: Math.PI * 0.03,
@@ -36,11 +36,6 @@ export default {
         toneMapping: ACESFilmicToneMapping, // this Tone mapping is used for more realistic colors
         toneMappingExposure: 1.2,
     },
-    shadow: {
-        enabled: false,
-        type: PCFSoftShadowMap,
-        size: 2048
-    },
     sceneEnvBackground: {
         color: 0x06B0E5,
         enabled: true,
@@ -59,6 +54,11 @@ export default {
         intensity: 5,
         startColor: 0xFF3224,
         endColor: 0xFFFF81
+    },
+    shadow: {
+        enabled: false,
+        type: PCFSoftShadowMap,
+        size: 2048
     },
     skyBox: {
         enabled: true,

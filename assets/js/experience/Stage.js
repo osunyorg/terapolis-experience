@@ -62,22 +62,6 @@ class Stage extends EventEmitter {
         this.POIManager = new POIManager( this );
         this.objectsToUpdate.push( this.POIManager );
     }
-
-    addShadow () {
-        this.renderer.shadowMap.enabled = true;
-        this.renderer.shadowMap.type = configuration.shadow.type;
-
-        this.mainObject.children.forEach( ( child, index ) => {
-            if ( child.name.includes( "Ground" ) ) {
-                console.log(child)
-                child.receiveShadow = true;
-            } else {
-                child.castShadow = true;
-                child.receiveShadow = false;
-            }
-        } );
-    }
-
     resize () {
         this.size = {
             width: window.innerWidth,
@@ -105,8 +89,10 @@ class Stage extends EventEmitter {
         this.renderer.setAnimationLoop( this.loop.bind( this ) );
 
         if (configuration.shadow.enabled) {
-            this.addShadow();
+            this.renderer.shadowMap.enabled = true;
+            this.renderer.shadowMap.type = configuration.shadow.type;
         }
+
     }
 
     loop () {
