@@ -94,7 +94,7 @@ export default class AssetsManager {
         );
     }
     _onLoading ( xhr) {
-        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+        // console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
     }
     _onError ( error ) {
         console.log( error );

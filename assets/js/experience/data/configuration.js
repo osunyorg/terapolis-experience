@@ -22,11 +22,11 @@ export default {
     },
     lights: {
         ambient: {
-            intensity: 0.5,
+            intensity: 0.1,
             color: '#000000',
         },
         directional: {
-            intensity: 0.5,
+            intensity: 0.1,
             color: '#000000',
             position: new Vector3(1, 5, -1)
         },
@@ -51,7 +51,7 @@ export default {
     sun: {
         speed: 0.0005, // 0.0005
         distance: 50, // 50
-        intensity: 10,
+        intensity: 1,
         startColor: 0xFF3224,
         endColor: 0xFFFF81
     },

@@ -39,6 +39,8 @@ export default class Sun extends BaseObject {
 
         this.colors.current.lerpColors(this.colors.start, this.colors.end, progression);
         this.light.color.copy(this.colors.current);
+        this.stage.scene.environmentRotation.z = Math.sin( tick * configuration.sun.speed ) * ( Math.PI );
+
         // this.setColors(this.colors.current);
     }
 }

@@ -36,7 +36,6 @@ export default class World extends BaseObject {
     addShadow () {
         this.content.children.forEach( ( child, index ) => {
             if ( child.name.includes( "Plane" ) ) {
-                console.log(child)
                 child.receiveShadow = true;
             } else {
                 child.castShadow = true;
@@ -51,17 +50,17 @@ export default class World extends BaseObject {
         const envMap = envMapAsset.data;
         envMap.mapping = EquirectangularReflectionMapping;
         envMap.colorSpace = SRGBColorSpace;
-
         this.stage.scene.environment = envMapAsset.data;
     }
 
     setTrackers () {
         const name = "PV_Tracker";
-        const sun = this.stage.lightManager.sun;
         this.pvTrackers = [];
-        this.content.children.forEach( ( child, index ) => {
+        
+        this.content.traverse( ( child, index ) => {
+            console.log(child.name, child.name.includes( name ))
             if ( child.name.includes( name ) ) {
-                this.pvTrackers.push(new PVTracker(child, this.stage.scene.environment, sun));
+                this.pvTrackers.push(new PVTracker(child, this.stage.scene.environment, this.sun.light));
             }
         } );
     }
@@ -69,6 +68,6 @@ export default class World extends BaseObject {
     update ( tick, delta ) {
         this.animationManager.update( delta );
         this.sun.update(tick);
-        this.pvTrackers.forEach(tracker => tracker.update( tick ));
+        this.pvTrackers.forEach( tracker => tracker.update( tick ) );
     }
 }
