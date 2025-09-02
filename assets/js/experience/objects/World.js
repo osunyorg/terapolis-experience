@@ -81,7 +81,7 @@ export default class World extends BaseObject {
         
         this.content.traverse( ( child, index ) => {
             if ( child.name.includes( name ) ) {
-                this.pvTrackers.push(new PVTracker(child, this.stage.scene.environment, this.sun.light));
+                this.pvTrackers.push(new PVTracker(child, this.stage.scene.environment, this.sun));
             }
         } );
 
