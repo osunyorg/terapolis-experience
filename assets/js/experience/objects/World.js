@@ -14,11 +14,11 @@ export default class World extends BaseObject {
 
         this.addAnimations();
         this.addSun();
-        
+
         if (configuration.shadow.enabled) {
             this.addShadow();
         }
-        
+
         this.setEnvMap();
         this.setTrackers();
 
