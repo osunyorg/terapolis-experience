@@ -1,4 +1,5 @@
 import {
+    AxesHelper,
     BackSide,
     BoxGeometry,
     Color,
@@ -7,6 +8,7 @@ import {
     LinearMipMapLinearFilter,
     Mesh,
     MeshStandardMaterial,
+    Object3D,
     PlaneGeometry,
     ShaderLib,
     ShaderMaterial,
@@ -17,7 +19,9 @@ import configuration from "../data/configuration";
 export default class PVTracker {
     constructor(mesh, envMap, sun) {
         this.mesh = mesh;
+        this.sun = sun;
         this._shader = ShaderLib.equirect;
+        // console.log(this.mesh)
         // this.mesh.material = new MeshStandardMaterial({
         //   roughness: 0.0,
         //   metalness: 0.7,
@@ -26,13 +30,31 @@ export default class PVTracker {
         //   envMap: envMap,
         // });
         // this.mesh.material.needsUpdate = true;
+    }
 
-        this.sun = sun;
+    prepare () {
+        this.container = new Object3D();
+
+        this.mesh.parent.add( this.container );
+        // this.container.add(  new AxesHelper( 6 ) );
+
+        this.container.rotation.copy( this.mesh.rotation );
+        this.container.position.copy( this.mesh.position );
+
+        this.mesh.position.set(0, 0, 0);
+        this.mesh.rotation.set(0, 0, 0);
+        this.container.add(this.mesh);
     }
 
     update(tick, delta) {
-        this.mesh.rotation.x = Math.sin(tick * configuration.sun.speed) * 0.4;
-        // this.mesh.rotation.z += 0.01
+        // Simulate
+        this.mesh.rotation.x = Math.sin(tick * configuration.sun.speed) * -0.4;
+        
+        
+        // Look at and constrain
         // this.mesh.lookAt(this.sun.position);
+        // this.mesh.rotation.x += Math.PI/2;
+        // this.mesh.rotation.y = 0;
+        // this.mesh.rotation.z = 0;
     }
 }

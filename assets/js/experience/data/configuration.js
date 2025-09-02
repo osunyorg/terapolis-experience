@@ -16,6 +16,7 @@ export default {
             focus: 7
         },
         orbit: {
+            free: true,
             maxPolarAngle: Math.PI / 2 - 0.35
             // maxPolarAngle: Math.PI
         }
@@ -30,17 +31,24 @@ export default {
             color: '#000000',
             position: new Vector3(1, 5, -1)
         },
+        hemi: {
+            skyColor: 0x99DDFF,
+            groundColor: 0x669933,
+            intensity: 0.1,
+        },
     },
     renderer: {
         antialias: true,
-        toneMapping: NoToneMapping, // this Tone mapping is used for more realistic colors
+        toneMappingEnabled: true,
+        toneMapping: NoToneMapping,
         toneMappingExposure: 0.8,
     },
     sceneEnvBackground: {
         color: 0x06B0E5,
+    },
+    envMap: {
         enabled: true,
-        intensity: 1,
-        show: true,
+        intensity: 0.5
     },
     sceneFog: {
         color: 0x06B0E5,
@@ -51,7 +59,7 @@ export default {
     sun: {
         speed: 0.0005, // 0.0005
         distance: 50, // 50
-        intensity: 1,
+        intensity: 10,
         startColor: 0xFF3224,
         endColor: 0xFFFF81
     },

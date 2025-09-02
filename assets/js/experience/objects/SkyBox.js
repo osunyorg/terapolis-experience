@@ -37,7 +37,7 @@ export default class SkyBox extends BaseObject {
         ground.rotation.x = - Math.PI / 2;
         ground.position.y = -5;
 
-        ground.receiveShadow = true;
+        // ground.receiveShadow = true;
 
         this.stage.scene.add( ground );
     }

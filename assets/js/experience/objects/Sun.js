@@ -1,9 +1,14 @@
-import { AmbientLight,CameraHelper,Color,DirectionalLight, HemisphereLight, PointLight } from 'three';
+import { AmbientLight,CameraHelper,Color,DirectionalLight, HemisphereLight, PointLight, Vector3 } from 'three';
 import BaseObject from "./BaseObject";
 import configuration from '../data/configuration';
+import { Easing, Tween } from '@tweenjs/tween.js';
 
 export default class Sun extends BaseObject {
     _setup () {
+        this._tick = 0;
+        this._target = new Vector3(0, 0, 0);
+        this._maxPolarAngle = (Math.PI * (1 / configuration.sun.speed)); 
+
         this.colors = {
             current: new Color( configuration.sun.startColor ),
             start: new Color( configuration.sun.startColor ),
@@ -29,17 +34,20 @@ export default class Sun extends BaseObject {
     }
 
     update ( tick, delta ) {
+        this._tick = tick % this._maxPolarAngle - (this._maxPolarAngle / 2);
         // const progression = Math.max(0, this.sun.position.y / configuration.sun.distance);
         // const progression = (1 + Math.sin( tick * configuration.sun.speed ) ) / 2;
         // const progression = 1 - (tick *  configuration.sun.speed / 4 % 1) //sawtooth
-        const progression = Math.max(0, Math.cos( tick * configuration.sun.speed ));
-        this.light.position.x = Math.sin( tick * configuration.sun.speed ) * -configuration.sun.distance;
+        const progression = Math.cos( this._tick * configuration.sun.speed );
+        this.light.position.x = Math.sin( this._tick * configuration.sun.speed ) * -configuration.sun.distance;
         this.light.position.y = progression * configuration.sun.distance;
         this.light.intensity = progression * configuration.sun.intensity;
 
         this.colors.current.lerpColors(this.colors.start, this.colors.end, progression);
         this.light.color.copy(this.colors.current);
-        this.stage.scene.environmentRotation.z = Math.sin( tick * configuration.sun.speed ) * ( Math.PI );
+        this.light.shadow.camera.lookAt(this._target);
+
+        this.stage.scene.environmentRotation.x = progression;
 
         // this.setColors(this.colors.current);
     }

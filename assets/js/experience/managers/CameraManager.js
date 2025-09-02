@@ -34,10 +34,13 @@ export default class CameraManager extends BaseManager {
     _addControls () {
         this.controls = new OrbitControls( this._camera, this.stage.renderer.domElement );
         this.controls.enableDamping = true;
-        this.controls.enableZoom = false;
-        this.controls.maxPolarAngle = configuration.camera.orbit.maxPolarAngle;
-        this.controls.maxDistance = configuration.camera.distance.blur;
-        this.controls.minDistance = configuration.camera.distance.blur;
+        this.controls.enableZoom = configuration.camera.orbit.free;
+
+        if (!configuration.camera.orbit.free) {
+            this.controls.maxPolarAngle = configuration.camera.orbit.maxPolarAngle;
+            this.controls.maxDistance = configuration.camera.distance.blur;
+            this.controls.minDistance = configuration.camera.distance.blur;
+        }
     }
     getCamera () {
         return this._camera;
@@ -83,9 +86,11 @@ export default class CameraManager extends BaseManager {
             .onUpdate(() => {
                 const { x, y, z } = this._animationState.target
                 this._target.set( x, y, z );
-                this.controls.target.copy(this._target);
-                this.controls.minDistance = this._animationState.distance;
-                this.controls.maxDistance = this._animationState.distance;
+                if (!configuration.camera.orbit.free) {
+                    this.controls.target.copy(this._target);
+                    this.controls.minDistance = this._animationState.distance;
+                    this.controls.maxDistance = this._animationState.distance;
+                }
             })
             .start();
     }

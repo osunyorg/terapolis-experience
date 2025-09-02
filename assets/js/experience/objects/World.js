@@ -18,11 +18,26 @@ export default class World extends BaseObject {
         if (configuration.shadow.enabled) {
             this.addShadow();
         }
+    
+        if (configuration.envMap.enabled) {
+            this.setEnvMap();
+        }
 
-        this.setEnvMap();
         this.setTrackers();
 
         this.stage.objectsToUpdate.push( this );
+        // this.debug();
+    }
+
+    debug () {
+        let index = 0;
+        window.addEventListener('keydown', e => {
+            if (e.key === "d") {
+                console.log(this.content.children[index].name)
+                this.content.children[index].clear();
+                index += 1;
+            }
+        })
     }
 
     addSun () {
@@ -35,7 +50,13 @@ export default class World extends BaseObject {
 
     addShadow () {
         this.content.children.forEach( ( child, index ) => {
-            if ( child.name.includes( "Plane" ) ) {
+            if ( child.name.includes( "Ground" ) 
+                || child.name.includes( "Floor" ) 
+                || child.name.includes( "Road" )
+                || child.name.includes( "Plane" )
+                || child.name.includes( "Water" )
+                || child.name.includes( "Park" ) 
+                || child.name.includes( "Cube" ) ) {
                 child.receiveShadow = true;
             } else {
                 child.castShadow = true;
@@ -51,18 +72,20 @@ export default class World extends BaseObject {
         envMap.mapping = EquirectangularReflectionMapping;
         envMap.colorSpace = SRGBColorSpace;
         this.stage.scene.environment = envMapAsset.data;
+        this.stage.scene.environmentIntensity = configuration.envMap.intensity;
     }
 
     setTrackers () {
-        const name = "PV_Tracker";
+        const name = "PV_Tracker_Active";
         this.pvTrackers = [];
         
         this.content.traverse( ( child, index ) => {
-            console.log(child.name, child.name.includes( name ))
             if ( child.name.includes( name ) ) {
                 this.pvTrackers.push(new PVTracker(child, this.stage.scene.environment, this.sun.light));
             }
         } );
+
+        this.pvTrackers.forEach( pvTracker => pvTracker.prepare() );
     }
 
     update ( tick, delta ) {

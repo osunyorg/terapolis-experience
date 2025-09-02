@@ -42,11 +42,14 @@ class Stage extends EventEmitter {
             width: window.innerWidth,
             height: window.innerHeight,
         };
+
         this.renderer.setSize( this.size.width, this.size.height );
 
-        this.renderer.toneMapping = configuration.renderer.toneMapping;
-        this.renderer.toneMappingExposure = configuration.renderer.toneMappingExposure;
-        this.renderer.physicallyCorrectLights = true;
+        if ( configuration.renderer.toneMappingEnabled ) {
+            this.renderer.toneMapping = configuration.renderer.toneMapping;
+            this.renderer.toneMappingExposure = configuration.renderer.toneMappingExposure;
+            this.renderer.physicallyCorrectLights = true;
+        }
         
         this.container.appendChild( this.renderer.domElement );
 
@@ -97,7 +100,6 @@ class Stage extends EventEmitter {
             this.renderer.shadowMap.enabled = true;
             this.renderer.shadowMap.type = configuration.shadow.type;
         }
-
     }
 
     loop () {

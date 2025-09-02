@@ -25,12 +25,12 @@ export default class LightManager extends BaseManager {
     addDirectional () {
         this.directionalLight = new DirectionalLight( configuration.lights.directional );
         this.directionalLight.position.copy( configuration.lights.directional.position );
-        this.lights.push(this.directionalLight);
+        this.lights.push( this.directionalLight );
     }
 
     addHemi () {
-        const hemi = new HemisphereLight( 0x99DDFF, 0x669933, 1 / 3 );
-        this.lights.push(hemi);
+        const hemi = new HemisphereLight( configuration.lights.hemi.skyColor, configuration.lights.hemi.groundColor, configuration.lights.hemi.intensity );
+        this.lights.push( hemi );
     }
 
     update () {
