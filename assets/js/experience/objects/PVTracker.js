@@ -15,12 +15,14 @@ import {
     SRGBColorSpace,
 } from "three";
 import configuration from "../data/configuration";
+import smoothValue from "../helpers/smoothValue";
 
 export default class PVTracker {
-    constructor(mesh, envMap, sun) {
+    constructor ( mesh, envMap, sun ) {
         this.mesh = mesh;
         this.sun = sun;
         this._shader = ShaderLib.equirect;
+        this._rotation = 0;
         // console.log(this.mesh)
         // this.mesh.material = new MeshStandardMaterial({
         //   roughness: 0.0,
@@ -30,6 +32,10 @@ export default class PVTracker {
         //   envMap: envMap,
         // });
         // this.mesh.material.needsUpdate = true;
+
+        // const envMapAsset = this.stage.assets.get('environment');
+        // const envMap = envMapAsset.data;
+        // this.mesh.material.envMap = envMap;
     }
 
     prepare () {
@@ -47,9 +53,11 @@ export default class PVTracker {
     }
 
     update(tick, delta) {
+        let rotation = Math.sin(this.sun._tick * configuration.sun.speed) * -0.4;
+        this._rotation = smoothValue(this._rotation, rotation)
         // Simulate
         // this.mesh.rotation.x = Math.sin(tick * configuration.sun.speed) * -0.4;
-        this.mesh.rotation.x = Math.sin(this.sun._tick * configuration.sun.speed) * -0.4;
+        this.mesh.rotation.x = this._rotation;
         // Look at and constrain
         // this.mesh.lookAt(this.sun.light.position);
         // this.mesh.rotation.x += Math.PI/2;

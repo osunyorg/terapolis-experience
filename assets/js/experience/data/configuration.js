@@ -1,4 +1,4 @@
-import { Vector3, ACESFilmicToneMapping, PCFSoftShadowMap, VSMShadowMap, PCFShadowMap, ReinhardToneMapping, CineonToneMapping, NoToneMapping } from 'three';
+import { Vector3, ACESFilmicToneMapping, PCFSoftShadowMap, VSMShadowMap, PCFShadowMap, ReinhardToneMapping, CineonToneMapping, NoToneMapping, AgXToneMapping } from 'three';
 export default {
     camera: {
         fov: 50,
@@ -16,25 +16,25 @@ export default {
             focus: 7
         },
         orbit: {
-            free: true,
+            free: false,
             maxPolarAngle: Math.PI / 2 - 0.35
             // maxPolarAngle: Math.PI
         }
     },
     lights: {
         ambient: {
-            intensity: 0.1,
+            intensity: 0.0,
             color: '#000000',
         },
         directional: {
-            intensity: 0.1,
+            intensity: 0.0,
             color: '#000000',
             position: new Vector3(1, 5, -1)
         },
         hemi: {
+            intensity: 0.0,
             skyColor: 0x99DDFF,
             groundColor: 0x669933,
-            intensity: 0.1,
         },
     },
     renderer: {
@@ -57,7 +57,7 @@ export default {
         near: 30,
     },
     sun: {
-        speed: 0.0005, // 0.0005
+        speed: 0.0003, // 0.0005
         distance: 50, // 50
         intensity: 10,
         startColor: 0xFF3224,

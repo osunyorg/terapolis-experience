@@ -6,9 +6,9 @@ export default class LightManager extends BaseManager {
     _setup () {
         this.lights = [];
         
-        this.addAmbient();
-        this.addDirectional();
-        this.addHemi();
+        // this.addAmbient();
+        // this.addDirectional();
+        // this.addHemi();
         
         this.lights.forEach(
             light => this.stage.scene.add(light)

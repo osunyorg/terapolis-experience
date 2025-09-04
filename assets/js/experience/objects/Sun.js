@@ -1,10 +1,11 @@
-import { AmbientLight,CameraHelper,Color,DirectionalLight, HemisphereLight, PointLight, Vector3 } from 'three';
+import { AmbientLight,CameraHelper,Color,DirectionalLight, HemisphereLight, Object3D, PointLight, Vector3 } from 'three';
 import BaseObject from "./BaseObject";
 import configuration from '../data/configuration';
 import { Easing, Tween } from '@tweenjs/tween.js';
 
 export default class Sun extends BaseObject {
     _setup () {
+        this._container = new Object3D();
         this._tick = 0;
         this._target = new Vector3(0, 0, 0);
         this._maxPolarAngle = (Math.PI * (1 / configuration.sun.speed)); 
@@ -27,10 +28,12 @@ export default class Sun extends BaseObject {
             this.light.shadow.camera.far = 100; // default
             // this.sun.shadow.blurSamples = 10;
             const helper = new CameraHelper( this.light.shadow.camera );
-            this.stage.scene.add( helper );
+            // this.stage.scene.add( helper );
         }
 
-        this.stage.scene.add( this.light );
+        this._container.add( this.light );
+        this._container.rotation.y = -Math.PI / 4;
+        this.stage.scene.add( this._container );
     }
 
     update ( tick, delta ) {
