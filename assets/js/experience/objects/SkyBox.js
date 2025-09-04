@@ -3,6 +3,10 @@ import BaseObject from "./BaseObject";
 import configuration from "../data/configuration";
 
 export default class SkyBox extends BaseObject {
+    constructor ( stage, sun ) {
+        super( stage );
+        this.sun = sun;
+    }
     _setup () {
         const { enabled, toneMapped, size } = configuration.skyBox
 
@@ -22,10 +26,16 @@ export default class SkyBox extends BaseObject {
         this.stage.scene.add( this._skybox );
 
         const background = this.stage.assets.get('environment');
-        this.update(new Color(configuration.skyBox.color));
+
+        this.set(new Color(configuration.skyBox.color));
+
+        this.colors = {
+            current: new Color( configuration.skyBox.startColor ),
+            start: new Color( configuration.skyBox.startColor ),
+            end: new Color( configuration.skyBox.endColor )
+        };
 
         this.addFloor();
-        
     }
 
     addFloor () {
@@ -42,7 +52,7 @@ export default class SkyBox extends BaseObject {
         this.stage.scene.add( ground );
     }
 
-    update ( background ) {
+    set ( background ) {
         if ( background.isColor ) {
             this._skybox.visible = false;
             this.stage.scene.background = background;
@@ -53,5 +63,11 @@ export default class SkyBox extends BaseObject {
             background.minFilter = LinearFilter;
             this._skybox.material.uniforms.tEquirect.value = background;
         }
+    }
+
+    update () {
+        this.colors.current.lerpColors( this.colors.start, this.colors.end, this.sun.progression );
+        this.stage.scene.background.copy( this.colors.current );
+        this.stage.scene.fog.color.copy( this.colors.current );
     }
 }

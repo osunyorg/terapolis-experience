@@ -9,7 +9,6 @@ import POIManager from './managers/POIManager';
 import { EventEmitter } from 'events';
 import events from './data/events';
 import AssetsManager from './managers/AssetsManager';
-import SkyBox from './objects/SkyBox';
 import World from './objects/World';
 
 class Stage extends EventEmitter {
@@ -81,16 +80,11 @@ class Stage extends EventEmitter {
 
     onAssetsLoaded () {
         this.addWorld();
-        this.addSky();
         this.onReady();
     }
 
     addWorld () {
         this.world = new World( this );
-    }
-
-    addSky () {
-        this.skyBox = new SkyBox(this);
     }
 
     onReady () {

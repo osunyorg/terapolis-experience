@@ -1,6 +1,6 @@
 export default [
     {
-        name: "Action",
+        name: "agxeed",
         timeScale: 0.1
     },
     {
@@ -17,6 +17,12 @@ export default [
     },
     {
         name: "Claas",
+        mixer: "Trackers",
         timeScale: 0.05
+    },
+    {
+        name: "PV_Tracker",
+        mixer: "Trackers",
+        timeScale: 0.01
     }
 ];

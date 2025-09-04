@@ -8,19 +8,32 @@ export default class AnimationsManager {
         this.mixers = [];
         this.animations = clips;
         this.animations.forEach(animation => this.add( animation ));
+
+        console.log(this.mixers);
+
     }
 
     add ( animation ) {
-        const mixer =  new AnimationMixer( this.object ),
-            options = this.getOptions( animation.name );
+        const options = this.getOptions( animation.name );
+        let mixer;
+
+        if ( options.mixer ) {
+            mixer = this.mixers.find( mix => mix.name === options.mixer );
+            console.log(mixer);
+        }
+        if (!mixer) {
+            mixer = new AnimationMixer( this.object );
+        }
+
+        if ( options ) {
+            mixer.timeScale = options.timeScale;
+            mixer.name = options.mixer || options.name;
+        }
+
+        this.mixers.push( mixer );
 
         mixer.clipAction( animation ).reset().play();
 
-        if (options) {
-            mixer.timeScale = options.timeScale;
-        }
-
-        this.mixers.push(mixer);
     }
 
     getOptions ( name ) {
@@ -31,6 +44,7 @@ export default class AnimationsManager {
                 animationOptions = options;
             }
         });
+
         return animationOptions;
     }
 

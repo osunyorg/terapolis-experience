@@ -2,14 +2,15 @@ import { AmbientLight,CameraHelper,Color,DirectionalLight, HemisphereLight, Obje
 import BaseObject from "./BaseObject";
 import configuration from '../data/configuration';
 import { Easing, Tween } from '@tweenjs/tween.js';
+import smoothValue from '../helpers/smoothValue';
 
 export default class Sun extends BaseObject {
     _setup () {
         this._container = new Object3D();
         this._tick = 0;
         this._target = new Vector3(0, 0, 0);
-        this._maxPolarAngle = (Math.PI * (1 / configuration.sun.speed)); 
-
+        this._maxPolarAngle = (Math.PI * 1.2 * (1 / configuration.sun.speed)); 
+        this.progression = 0;
         this.colors = {
             current: new Color( configuration.sun.startColor ),
             start: new Color( configuration.sun.startColor ),
@@ -28,7 +29,7 @@ export default class Sun extends BaseObject {
             this.light.shadow.camera.far = 100; // default
             // this.sun.shadow.blurSamples = 10;
             const helper = new CameraHelper( this.light.shadow.camera );
-            // this.stage.scene.add( helper );
+            this.stage.scene.add( helper );
         }
 
         this._container.add( this.light );
@@ -38,20 +39,21 @@ export default class Sun extends BaseObject {
 
     update ( tick, delta ) {
         this._tick = tick % this._maxPolarAngle - (this._maxPolarAngle / 2);
-        // const progression = Math.max(0, this.sun.position.y / configuration.sun.distance);
-        // const progression = (1 + Math.sin( tick * configuration.sun.speed ) ) / 2;
-        // const progression = 1 - (tick *  configuration.sun.speed / 4 % 1) //sawtooth
-        const progression = Math.cos( this._tick * configuration.sun.speed );
-        this.light.position.x = Math.sin( this._tick * configuration.sun.speed ) * -configuration.sun.distance;
-        this.light.position.y = progression * configuration.sun.distance;
-        this.light.intensity = progression * configuration.sun.intensity;
+        const cosinus = Math.cos( this._tick * configuration.sun.speed ),
+            sinus = Math.sin( this._tick * configuration.sun.speed );
 
-        this.colors.current.lerpColors(this.colors.start, this.colors.end, progression);
+        this.progression = smoothValue(this.progression, (( sinus + 1 ) / 2) );
+        this.light.position.x = sinus * -configuration.sun.distance;
+        this.light.position.y = cosinus * configuration.sun.distance;
+        this.light.intensity = cosinus * configuration.sun.intensity;
+
+        this.colors.current.lerpColors(this.colors.start, this.colors.end, this.progression);
+
+        console.log(Math.sin( this._tick * configuration.sun.speed ))
         this.light.color.copy(this.colors.current);
+
         this.light.shadow.camera.lookAt(this._target);
 
-        this.stage.scene.environmentRotation.x = progression;
-
-        // this.setColors(this.colors.current);
+        this.stage.scene.environmentRotation.x = this.progression;
     }
 }

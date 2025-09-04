@@ -16,7 +16,7 @@ export default {
             focus: 7
         },
         orbit: {
-            free: false,
+            free: true,
             maxPolarAngle: Math.PI / 2 - 0.35
             // maxPolarAngle: Math.PI
         }
@@ -60,8 +60,8 @@ export default {
         speed: 0.0003, // 0.0005
         distance: 50, // 50
         intensity: 10,
-        startColor: 0xFF3224,
-        endColor: 0xFFFF81
+        startColor: "#FF3224",
+        endColor: "#fff2b8ff"
     },
     shadow: {
         enabled: false,
@@ -72,6 +72,11 @@ export default {
         enabled: true,
         toneMapped: true,
         size: 100,
-        color: 0x06B0E5
-    } 
+        color: "#06B0E5",
+        startColor: "#06B0E5",
+        endColor: "#294db0",
+    },
+    pvTracker: {
+        rotation: -0.6
+    }
 }

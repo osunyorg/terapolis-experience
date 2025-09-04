@@ -53,7 +53,7 @@ export default class PVTracker {
     }
 
     update(tick, delta) {
-        let rotation = Math.sin(this.sun._tick * configuration.sun.speed) * -0.4;
+        let rotation = Math.sin(this.sun._tick * configuration.sun.speed) * configuration.pvTracker.rotation;
         this._rotation = smoothValue(this._rotation, rotation)
         // Simulate
         // this.mesh.rotation.x = Math.sin(tick * configuration.sun.speed) * -0.4;

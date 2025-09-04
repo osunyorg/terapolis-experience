@@ -3,6 +3,7 @@ import configuration from "../data/configuration";
 import AnimationsManager from "../managers/AnimationsManager";
 import BaseObject from "./BaseObject";
 import PVTracker from "./PVTracker";
+import SkyBox from './SkyBox';
 import Sun from "./Sun";
 
 export default class World extends BaseObject {
@@ -13,7 +14,7 @@ export default class World extends BaseObject {
         this.stage.scene.add( this.content );
 
         this.addAnimations();
-        this.addSun();
+        this.addSky();
 
         if (configuration.shadow.enabled) {
             this.addShadow();
@@ -42,8 +43,9 @@ export default class World extends BaseObject {
         })
     }
 
-    addSun () {
+    addSky () {
         this.sun = new Sun( this.stage );
+        this.skyBox = new SkyBox( this.stage, this.sun );
     }
 
     setWater () {
@@ -127,6 +129,7 @@ export default class World extends BaseObject {
     update ( tick, delta ) {
         this.animationManager.update( delta );
         this.sun.update( tick );
+        this.skyBox.update();
         this.pvTrackers.forEach( tracker => tracker.update( tick ) );
     }
 }
