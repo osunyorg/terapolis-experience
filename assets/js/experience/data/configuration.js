@@ -16,7 +16,7 @@ export default {
             focus: 7
         },
         orbit: {
-            free: true,
+            free: false,
             maxPolarAngle: Math.PI / 2 - 0.35
             // maxPolarAngle: Math.PI
         }
