@@ -17,7 +17,9 @@ export default {
         },
         orbit: {
             free: false,
-            maxPolarAngle: Math.PI / 2 - 0.35
+            // maxPolarAngle: Math.PI / 2 - 0.35
+            minPolarAngle: Math.PI / 2 - 0.5,
+            maxPolarAngle: Math.PI / 2 - 0.3
             // Caméra plus rasante
             // maxPolarAngle: Math.PI
         }

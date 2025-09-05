@@ -38,6 +38,7 @@ export default class CameraManager extends BaseManager {
 
         if (!configuration.camera.orbit.free) {
             this.controls.maxPolarAngle = configuration.camera.orbit.maxPolarAngle;
+            this.controls.minPolarAngle = configuration.camera.orbit.minPolarAngle;
             this.controls.maxDistance = configuration.camera.distance.blur;
             this.controls.minDistance = configuration.camera.distance.blur;
         }
