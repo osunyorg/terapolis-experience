@@ -57,7 +57,7 @@ export default {
         near: 30,
     },
     sun: {
-        speed: 0.0003, // 0.0005
+        speed: 0.00015, // 0.0005
         distance: 50, // 50
         intensity: 10,
         startColor: "#FF3224",
