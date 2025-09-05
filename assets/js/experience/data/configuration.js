@@ -18,6 +18,7 @@ export default {
         orbit: {
             free: false,
             maxPolarAngle: Math.PI / 2 - 0.35
+            // Caméra plus rasante
             // maxPolarAngle: Math.PI
         }
     },
@@ -53,7 +54,7 @@ export default {
     sceneFog: {
         color: 0x06B0E5,
         enabled: true,
-        far: 400,
+        far: 120,
         near: 30,
     },
     sun: {
