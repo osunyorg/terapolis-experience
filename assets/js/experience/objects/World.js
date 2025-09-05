@@ -54,10 +54,8 @@ export default class World extends BaseObject {
         // this.water.material = new MeshToonMaterial({
         //     color: 0x0000FF
         // });
-        console.log(this.water);
 
         let color = new Color().copy(this.water.material.color)
-        console.log(color)
 
         // this.water.material = new MeshPhysicalMaterial({
         //     // roughness: 0.3,

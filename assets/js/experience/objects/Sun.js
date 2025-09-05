@@ -49,7 +49,6 @@ export default class Sun extends BaseObject {
 
         this.colors.current.lerpColors(this.colors.start, this.colors.end, this.progression);
 
-        console.log(Math.sin( this._tick * configuration.sun.speed ))
         this.light.color.copy(this.colors.current);
 
         this.light.shadow.camera.lookAt(this._target);
