@@ -36,7 +36,6 @@ export default class World extends BaseObject {
         let index = 0;
         window.addEventListener('keydown', e => {
             if (e.key === "d") {
-                console.log(this.content.children[index].name)
                 this.content.children[index].clear();
                 index += 1;
             }
