@@ -27,13 +27,6 @@ items:
     children: []
     path: "/pages/points-dinteret/elevage-ovin"
     file: content/fr/pages/points-dinteret/elevage-ovin/_index.html
-  - title: AgXeed
-    target: "/points-dinteret/agxeed/"
-    kind: page
-    new_tab: false
-    children: []
-    path: "/pages/points-dinteret/agxeed"
-    file: content/fr/pages/points-dinteret/agxeed/_index.html
   - title: Agrivoltaïsme pour la grande culture
     target: "/points-dinteret/grande-culture/"
     kind: page
@@ -41,6 +34,13 @@ items:
     children: []
     path: "/pages/points-dinteret/grande-culture"
     file: content/fr/pages/points-dinteret/grande-culture/_index.html
+  - title: AgXeed
+    target: "/points-dinteret/agxeed/"
+    kind: page
+    new_tab: false
+    children: []
+    path: "/pages/points-dinteret/agxeed"
+    file: content/fr/pages/points-dinteret/agxeed/_index.html
   - title: Territoire
     target: "/points-dinteret/territoire/"
     kind: page
