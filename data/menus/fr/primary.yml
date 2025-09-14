@@ -27,6 +27,13 @@ items:
     children: []
     path: "/pages/points-dinteret/elevage-ovin"
     file: content/fr/pages/points-dinteret/elevage-ovin/_index.html
+  - title: 'La robotique agricole '
+    target: "/points-dinteret/agxeed/"
+    kind: page
+    new_tab: false
+    children: []
+    path: "/pages/points-dinteret/agxeed"
+    file: content/fr/pages/points-dinteret/agxeed/_index.html
   - title: Agrivoltaïsme pour la grande culture
     target: "/points-dinteret/grande-culture/"
     kind: page
@@ -34,20 +41,6 @@ items:
     children: []
     path: "/pages/points-dinteret/grande-culture"
     file: content/fr/pages/points-dinteret/grande-culture/_index.html
-  - title: AgXeed
-    target: "/points-dinteret/agxeed/"
-    kind: page
-    new_tab: false
-    children: []
-    path: "/pages/points-dinteret/agxeed"
-    file: content/fr/pages/points-dinteret/agxeed/_index.html
-  - title: Territoire
-    target: "/points-dinteret/territoire/"
-    kind: page
-    new_tab: false
-    children: []
-    path: "/pages/points-dinteret/territoire"
-    file: content/fr/pages/points-dinteret/territoire/_index.html
   - title: Îlot de vie
     target: "/points-dinteret/ilot-de-vie/"
     kind: page
@@ -57,4 +50,11 @@ items:
     file: content/fr/pages/points-dinteret/ilot-de-vie/_index.html
   path: "/pages/points-dinteret"
   file: content/fr/pages/points-dinteret/_index.html
+- title: Révolutionner l’énergie de nos territoires
+  target: "/points-dinteret/territoire/"
+  kind: page
+  new_tab: false
+  children: []
+  path: "/pages/points-dinteret/territoire"
+  file: content/fr/pages/points-dinteret/territoire/_index.html
 
