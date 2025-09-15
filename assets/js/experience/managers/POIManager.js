@@ -13,10 +13,12 @@ export default class POIManager extends BaseManager {
             this.enableAllPOI();
         });
     }
+
     _add ( poiData ) {
         const poi = new PointOfInterest( poiData, this );
         this.POIs.push( poi );
     }
+
     open ( id ) {
         this.POIs.forEach( poi => {
             if ( poi.id === id ) {

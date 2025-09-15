@@ -41,6 +41,8 @@ export default class CameraManager extends BaseManager {
             this.controls.minPolarAngle = configuration.camera.orbit.minPolarAngle;
             this.controls.maxDistance = configuration.camera.distance.blur;
             this.controls.minDistance = configuration.camera.distance.blur;
+            this.controls.enablePan = configuration.camera.orbit.enablePan;
+            this.controls.enableZoom = configuration.camera.orbit.enableZoom;
         }
     }
     getCamera () {

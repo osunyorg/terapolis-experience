@@ -9,7 +9,7 @@ export default {
         isControlable: true,
         pointerFactor: {
             x: Math.PI * 0.03,
-            y: Math.PI * 0.03,
+            y: Math.PI * 0.03
         },
         distance: {
             blur: 20, // 20
@@ -17,6 +17,8 @@ export default {
         },
         orbit: {
             free: false,
+            enableZoom: false,
+            enablePan: false,
             // maxPolarAngle: Math.PI / 2 - 0.35
             minPolarAngle: Math.PI / 2 - 0.5,
             maxPolarAngle: Math.PI / 2 - 0.3
