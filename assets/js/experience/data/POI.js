@@ -28,7 +28,7 @@ export default [
     {
         id: "stockage-batterie",
         introductionId: "introduction-stockage-batterie",
-        position: new Vector3(11, 1.5, 7)
+        position: new Vector3(10.5, 1, 10.5)
     },
 
     {
