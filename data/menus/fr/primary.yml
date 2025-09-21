@@ -13,7 +13,7 @@ items:
     children: []
     path: "/pages/points-dinteret/stockage-batterie"
     file: content/fr/pages/points-dinteret/stockage-batterie/_index.html
-  - title: Élevage Bovin
+  - title: L’agrivoltaisme appliqué aux élevages bovins
     target: "/points-dinteret/elevage-bovin/"
     kind: page
     new_tab: false
