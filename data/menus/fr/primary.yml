@@ -20,7 +20,7 @@ items:
     children: []
     path: "/pages/points-dinteret/elevage-bovin"
     file: content/fr/pages/points-dinteret/elevage-bovin/_index.html
-  - title: Élevage Ovin
+  - title: L’agrivoltaisme appliqué aux élevages ovins
     target: "/points-dinteret/elevage-ovin/"
     kind: page
     new_tab: false
