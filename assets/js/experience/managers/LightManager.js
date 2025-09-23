@@ -6,7 +6,7 @@ export default class LightManager extends BaseManager {
     _setup () {
         this.lights = [];
         
-        // this.addAmbient();
+        this.addAmbient();
         // this.addDirectional();
         // this.addHemi();
         

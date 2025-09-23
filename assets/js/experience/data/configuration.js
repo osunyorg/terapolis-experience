@@ -28,12 +28,12 @@ export default {
     },
     lights: {
         ambient: {
-            intensity: 0.0,
-            color: '#000000',
+            intensity: 0.5,
+            color: '#ffffff',
         },
         directional: {
             intensity: 0.0,
-            color: '#000000',
+            color: '#ffffff',
             position: new Vector3(1, 5, -1)
         },
         hemi: {
@@ -64,7 +64,7 @@ export default {
     sun: {
         speed: 0.0001, // 0.0005
         distance: 50, // 50
-        intensity: 10,
+        intensity: 13,
         startColor: "#FF3224",
         endColor: "#fff2b8ff"
     },
