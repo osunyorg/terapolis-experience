@@ -58,7 +58,7 @@ footer
         height: 120%
         border-radius: 50%
         border: space(1) solid $color-border-alpha
-        transition: 0.25s
+        transition: $color-duration
         pointer-events: none
     &:focus
         background: white
@@ -97,17 +97,28 @@ footer
         padding-top: var(--grid-gutter)
         padding-bottom: var(--grid-gutter)
         background: $color-popin-background
-        box-shadow: 0px 0px 0px 4px $color-border-alpha
+        // box-shadow: 0px 0px 0px 4px $color-border-alpha
         height: 100%
         overflow-y: auto
     .popup-close
-        @extend .button
-        @extend .button--small
         @include icon(close-line, before)
+            font-size: pxToRem(22)
+            line-height: 1
+        background: var(--color-background)
+        box-shadow: 0px 0px 0px 4px $color-border-alpha
+        cursor: pointer
         position: absolute
         top: space(-3)
         right: space(-3)
+        height: pxToRem(42)
+        width: pxToRem(42)
+        border: 0
         z-index: 5
+        border-radius: 50%
+        transition: $color-duration
+        &:hover
+            color: var(--color-background)
+            background: var(--color-text)
 
 .poi-popup
     .poi-title
