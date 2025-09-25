@@ -1,7 +1,7 @@
 export default [
   {
     id: "terrain",
-    src: "/assets/3D/terrain_v21.glb",
+    src: "/assets/3D/terrain_v22.glb",
     data: null,
     loader: "GLTF",
   },
