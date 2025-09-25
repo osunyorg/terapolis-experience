@@ -151,33 +151,38 @@ footer
 html.has-modal-opened body::after
     display: none
 
-.block
-    .top
-        display: block !important
+// Blocks
+.poi-popup
+    .container
+        padding-left: $spacing-3
+        padding-right: $spacing-3
+    .block
+        .top
+            display: block !important
 
-.block-features
-    .block-content
-        ul
-            display: flex !important
-            flex-direction: column
+    .block-features
+        .block-content
+            ul
+                display: flex !important
+                flex-direction: column
 
 
-.block-chapter
-    .chapter
-        flex-direction: column !important
-        figure
-            margin-top: $spacing-2
-        *
-            max-width: 100%
+    .block-chapter
+        .chapter
+            flex-direction: column !important
+            figure
+                margin-top: $spacing-2
+            *
+                max-width: 100%
 
-.block-video
-    .block-content
-        display: block !important
-        .video
-            margin-bottom: $spacing-2
+    .block-video
+        .block-content
+            display: block !important
+            .video
+                margin-bottom: $spacing-2
 
-.block-gallery
-    &--grid
-        .gallery
-            display: flex !important
-            flex-direction: column
+    .block-gallery
+        &--grid
+            .gallery
+                display: flex !important
+                flex-direction: column
