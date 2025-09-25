@@ -43,6 +43,7 @@ footer
     cursor: pointer
     border-radius: 50%
     z-index: 10
+    transition: opacity $color-duration
     &::after
         content: url(/assets/images/marker.svg)
         height: pxToRem(22)
@@ -67,6 +68,9 @@ footer
         &::before
             transform: scale(1.1)
             border: space(1.5) solid $color-text
+    &.disabled
+        opacity: 0
+        pointer-events: none
 
 
 %popup

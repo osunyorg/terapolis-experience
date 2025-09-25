@@ -15,7 +15,7 @@ export default class POIPopup extends window.osuny.Popup {
 
         super.toggle(open, triggerElement);
 
-        if (!this.state.opened) {
+        if (!this.state.opened && triggerElement) {
             instancedStage.emit(events.POI_CLOSE);
         }
     }

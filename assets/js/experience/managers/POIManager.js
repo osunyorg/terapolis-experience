@@ -1,6 +1,7 @@
 import events from "../data/events";
 import POI from "../data/POI";
 import PointOfInterest from "../objects/PointOfInterest";
+import instancedStage from "../Stage";
 import BaseManager from "./BaseManager";
 
 export default class POIManager extends BaseManager {
@@ -24,7 +25,7 @@ export default class POIManager extends BaseManager {
             if ( poi.id === id ) {
                 poi.focus();
             } else {
-                poi.disable();
+                poi.blur();
             }
         });
     }

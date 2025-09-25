@@ -1,4 +1,4 @@
-import { Object3D, Vector2, Vector3 } from "three";
+import { Vector2, Vector3 } from "three";
 import POIContentManager from "js/interface/POIContentManager";
 import POIButton from "js/interface/POIButton";
 
@@ -20,16 +20,22 @@ export default class PointOfInterest {
     }
 
     _setup () {
-        this.button = new POIButton(this._stage.container, () => {
-            this._manager.open(this.id);
+        this.button = new POIButton( this._stage.container, () => {
+            this._manager.open( this.id );
         });
     }
 
     focus () {
-        this._stage.cameraManager.focusOn(this.position);
+        this._stage.cameraManager.focusOn( this.position );
+        POIContentManager.closeAll();
         setTimeout(() => {
-            POIContentManager.open(this._data.introductionId);
+            this.disable();
+            POIContentManager.open( this._data.introductionId );
         }, 1200);
+    }
+
+    blur () {
+        this.enable();
     }
 
     disable () {
@@ -53,9 +59,9 @@ export default class PointOfInterest {
     }
 
     _updateVisibility () {
-        const isInFrustrum = this._stage.cameraManager.isInFrustum(this.position);
+        const isInFrustrum = this._stage.cameraManager.isInFrustum( this.position );
         this._display = isInFrustrum && this._canDisplay;
-        if (this._display) {
+        if ( this._display ) {
             this.button.show();
         } else {
             this.button.hide();
