@@ -1,5 +1,6 @@
 import { Object3D, Vector2, Vector3 } from "three";
 import POIContentManager from "js/interface/POIContentManager";
+import POIButton from "js/interface/POIButton";
 
 export default class PointOfInterest {
 
@@ -19,24 +20,9 @@ export default class PointOfInterest {
     }
 
     _setup () {
-        this._createDomElement();
-    }
-
-    _createDomElement () {
-        this.element = document.createElement('button');
-        this.element.classList.add('poi-button');
-        this.element.setAttribute('type', 'button');
-        this._stage.container.append(this.element);
-
-        this._bindClick();
-    }
-
-    _bindClick () {
-        this.element.addEventListener('click', this._onClick.bind(this));
-    }
-
-    _onClick () {
-        this._manager.open(this.id);
+        this.button = new POIButton(this._stage.container, () => {
+            this._manager.open(this.id);
+        });
     }
 
     focus () {
@@ -59,8 +45,7 @@ export default class PointOfInterest {
         this._worldPosition.project( this._stage.camera );
         this._position2D.x = ( (this._worldPosition.x + 1) / 2 ) * this._stage.size.width;
         this._position2D.y = ( -(this._worldPosition.y - 1) / 2 ) * this._stage.size.height;
-        this.element.style.left = this._position2D.x + 'px';
-        this.element.style.top = this._position2D.y + 'px';
+        this.button.move(this._position2D);
     }
 
     _isInFrustum () {
@@ -70,7 +55,11 @@ export default class PointOfInterest {
     _updateVisibility () {
         const isInFrustrum = this._stage.cameraManager.isInFrustum(this.position);
         this._display = isInFrustrum && this._canDisplay;
-        this.element.style.display = this._display ? "block" : "none";
+        if (this._display) {
+            this.button.show();
+        } else {
+            this.button.hide();
+        }
     }
 
     update () {

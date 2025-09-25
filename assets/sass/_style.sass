@@ -24,16 +24,44 @@ footer
 .poi-button
     @extend .button
     @extend .button--small
-    @include icon('eye-line')
+    background: var(--color-background)
+    display: flex
+    align-items: center
+    justify-content: center
     width: space(10)
     height: space(10)
-    line-height: space(10)
     padding: 0
     text-align: center
     margin: space(-5)
     position: absolute
     cursor: pointer
+    border-radius: 50%
     z-index: 10
+    &::after
+        content: url(/assets/images/marker.svg)
+        height: pxToRem(22)
+        width: pxToRem(18)
+        display: block
+    &::before
+        content: ''
+        display: block
+        position: absolute
+        top: -10%
+        left: -10%
+        width: 120%
+        height: 120%
+        border-radius: 50%
+        border: space(1) solid $color-border-alpha
+        transition: 0.25s
+        pointer-events: none
+    &:focus
+        background: white
+    &:hover
+        background: white
+        &::before
+            transform: scale(1.1)
+            border: space(1.5) solid $color-text
+
 
 %popup
     opacity: 0
@@ -58,11 +86,12 @@ footer
     transition: 0.5s ease-in-out
     .content
         position: relative
-        width: columns(8)
+        width: columns(5)
         border-radius: $border-radius
         padding-top: var(--grid-gutter)
         padding-bottom: var(--grid-gutter)
         background: var(--color-background)
+        box-shadow: 0px 0px 0px 4px $color-border-alpha
         height: 100%
         overflow-y: auto
     .popup-close
@@ -72,7 +101,7 @@ footer
         position: absolute
         top: space(-3)
         right: space(-3)
-        z-index: 2
+        z-index: 5
 
 .poi-popup
     .poi-title
@@ -101,27 +130,54 @@ footer
         background: var(--color-background)
         border-radius: $border-radius
         width: columns(8)
+        box-shadow: 0px 0px 0px 4px $color-border-alpha
     .container
-        padding: space(5)
+        padding: pxToRem(20) pxToRem(100) pxToRem(20) pxToRem(24)
         position: relative
-        padding-left: space(30)
         > * + *
             margin-top: $spacing-3
         &::after
             content: ''
             position: absolute
-            left: 0%
-            top: 50%
-            width: space(50)
-            height: space(50)
-            background-color: $color-text-alt
+            right: pxToRem(24)
+            top: pxToRem(23)
+            display: block
+            width: pxToRem(62)
+            height: pxToRem(82)
             background-image: url(/assets/images/poly.png)
-            background-position: top 10%
-            background-size: 120%
-            border-radius: 50%
-            border: space(2) solid white
-            transform: translate(-50%, -50%)
+            background-size: contain
+            z-index: 10
 
 html.has-modal-opened body::after
     display: none
 
+.block
+    .top
+        display: block !important
+
+.block-features
+    .block-content
+        ul
+            display: flex !important
+            flex-direction: column
+
+
+.block-chapter
+    .chapter
+        flex-direction: column !important
+        figure
+            margin-top: $spacing-2
+        *
+            max-width: 100%
+
+.block-video
+    .block-content
+        display: block !important
+        .video
+            margin-bottom: $spacing-2
+
+.block-gallery
+    &--grid
+        .gallery
+            display: flex !important
+            flex-direction: column
