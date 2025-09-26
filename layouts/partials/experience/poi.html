@@ -3,9 +3,22 @@
 <div class="poi-popup" id="{{ .Params.slug }}">
   <button class="popup-close" title="Fermer"></button>
   <div class="content">
-    <div class="container">
+    <div class="container top-hero">
       <h2 class="h1 poi-title">{{ .Title }}</h2>
+      {{ with .Params.summary }}
+        <div class="summary">
+          {{ safeHTML . }}
+        </div>
+      {{ end }}
+      {{ with .Params.image }}
+        {{ partial "commons/image-figure.html" (dict
+          "image" .
+          "sizes" site.Params.image_sizes.design_system.hero
+          "lazy" false
+        ) }}
+      {{ end }}
     </div>
+
     {{ partial "contents/list.html" (dict
       "context" .
       "contents" .Params.contents

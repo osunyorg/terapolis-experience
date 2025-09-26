@@ -1,3 +1,7 @@
+body
+    font-weight: $body-weight
+
+
 canvas
     position: fixed
     inset: 0
@@ -98,10 +102,9 @@ footer
         position: relative
         width: columns(5)
         border-radius: $border-radius
-        padding-top: var(--grid-gutter)
+        padding-top: pxToRem(30)
         padding-bottom: var(--grid-gutter)
         background: $color-popin-background
-        // box-shadow: 0px 0px 0px 4px $color-border-alpha
         height: 100%
         overflow-y: auto
     .popup-close
@@ -124,18 +127,6 @@ footer
             color: var(--color-background)
             background: var(--color-text)
 
-.poi-popup
-    .poi-title
-        margin-bottom: $spacing-3
-    .poi-summary
-        margin-top: $spacing-3
-        margin-bottom: $spacing-3
-    .block-gallery
-        &--carousel
-            .slider figure picture img
-                max-width: columns(7)
-                object-fit: contain
-
 .poi-introduction-popup
     @extend %popup
     position: fixed
@@ -148,46 +139,68 @@ footer
     z-index: $zindex-modal + 1
     transform: translateY(100%)
     .content
-        background: var(--color-background)
+        background: $color-popin-background
         border-radius: $border-radius
         width: columns(8)
         box-shadow: 0px 0px 0px 4px $color-border-alpha
     .container
-        padding: pxToRem(20) pxToRem(100) pxToRem(20) pxToRem(24)
+        padding: pxToRem(20) pxToRem(80) pxToRem(20) pxToRem(24)
         position: relative
         > * + *
             margin-top: $spacing-3
         &::after
             content: ''
-            position: absolute
-            right: pxToRem(24)
-            top: pxToRem(23)
-            display: block
-            width: pxToRem(62)
-            height: pxToRem(82)
             background-image: url(/assets/images/poly.png)
-            background-size: contain
+            background-color: $color-popin-background
+            background-position: pxToRem(4) pxToRem(4)
+            background-repeat: no-repeat
+            background-size: 110%
+            display: block
+            position: absolute
+            right: 0%
+            top: 50%
+            width: pxToRem(115)
+            height: pxToRem(115)
+            box-shadow: 0px 0px 0px 4px $color-border-alpha
+            border-radius: 50%
+            transform: translate(50%, -50%)
             z-index: 10
+
+
 
 html.has-modal-opened body::after
     display: none
 
 // Blocks
 .poi-popup
+    .top-hero
+        figure
+            margin: pxToRem(20) 0
+            padding: pxToRem(20) 0
+            border-top: 1px solid $color-popin-border
+            border-bottom: 1px solid $color-popin-border
+            img
+                border-radius: pxToRem(4)
     .container
         padding-left: $spacing-3
         padding-right: $spacing-3
+
+    .poi-title
+        margin-bottom: $spacing-3
+
+    .block-gallery
+        &--carousel
+            .slider figure picture img
+                max-width: columns(7)
+                object-fit: contain
     .block
         .top
             display: block !important
-
     .block-features
         .block-content
             ul
                 display: flex !important
                 flex-direction: column
-
-
     .block-chapter
         .chapter
             flex-direction: column !important
@@ -195,13 +208,11 @@ html.has-modal-opened body::after
                 margin-top: $spacing-2
             *
                 max-width: 100%
-
     .block-video
         .block-content
             display: block !important
             .video
                 margin-bottom: $spacing-2
-
     .block-gallery
         &--grid
             .gallery

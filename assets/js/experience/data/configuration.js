@@ -5,14 +5,14 @@ export default {
         fovMobile: null,
         near: 0.1,
         far: 10000,
-        position: new Vector3(0, 15, 14), //new Vector3(0, 0.5, 3.5),
+        position: new Vector3(0, 6, 14), //new Vector3(0, 0.5, 3.5),
         isControlable: true,
         pointerFactor: {
             x: Math.PI * 0.03,
             y: Math.PI * 0.03
         },
         distance: {
-            blur: 20, // 20
+            blur: 25, // 20
             focus: 7
         },
         orbit: {
