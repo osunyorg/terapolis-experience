@@ -1,0 +1,60 @@
+---
+title: Menu principal
+items:
+- title: Points d'intérêt
+  target: "/points-dinteret/"
+  kind: page
+  new_tab: false
+  children:
+  - title: 'Stockage batterie : conjuguer performance et efficience du réseau électrique'
+    target: "/points-dinteret/stockage-batterie/"
+    kind: page
+    new_tab: false
+    children: []
+    path: "/pages/points-dinteret/stockage-batterie"
+    file: content/fr/pages/points-dinteret/stockage-batterie/_index.html
+  - title: L’agrivoltaïsme appliqué à l'élevage bovin
+    target: "/points-dinteret/elevage-bovin/"
+    kind: page
+    new_tab: false
+    children: []
+    path: "/pages/points-dinteret/elevage-bovin"
+    file: content/fr/pages/points-dinteret/elevage-bovin/_index.html
+  - title: L’agrivoltaïsme appliqué à l'élevage ovin
+    target: "/points-dinteret/elevage-ovin/"
+    kind: page
+    new_tab: false
+    children: []
+    path: "/pages/points-dinteret/elevage-ovin"
+    file: content/fr/pages/points-dinteret/elevage-ovin/_index.html
+  - title: Agrivoltaïsme pour la grande culture
+    target: "/points-dinteret/grande-culture/"
+    kind: page
+    new_tab: false
+    children: []
+    path: "/pages/points-dinteret/grande-culture"
+    file: content/fr/pages/points-dinteret/grande-culture/_index.html
+  - title: Machines autonomes et robotique agricole
+    target: "/points-dinteret/agxeed/"
+    kind: page
+    new_tab: false
+    children: []
+    path: "/pages/points-dinteret/agxeed"
+    file: content/fr/pages/points-dinteret/agxeed/_index.html
+  - title: Révolutionner l’énergie de nos territoires
+    target: "/points-dinteret/territoire/"
+    kind: page
+    new_tab: false
+    children: []
+    path: "/pages/points-dinteret/territoire"
+    file: content/fr/pages/points-dinteret/territoire/_index.html
+  - title: 'Les ilots de vie : respect de l’écologie et des paysages'
+    target: "/points-dinteret/ilot-de-vie/"
+    kind: page
+    new_tab: false
+    children: []
+    path: "/pages/points-dinteret/ilot-de-vie"
+    file: content/fr/pages/points-dinteret/ilot-de-vie/_index.html
+  path: "/pages/points-dinteret"
+  file: content/fr/pages/points-dinteret/_index.html
+
