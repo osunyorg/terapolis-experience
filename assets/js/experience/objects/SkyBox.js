@@ -25,7 +25,8 @@ export default class SkyBox extends BaseObject {
         this._skybox = new Mesh( box, this._material );
         this.stage.scene.add( this._skybox );
 
-        const background = this.stage.assets.get('environment');
+        // const background = this.stage.assets.get('environment');
+        // this.set(background);
 
         this.set(new Color(configuration.skyBox.color));
 

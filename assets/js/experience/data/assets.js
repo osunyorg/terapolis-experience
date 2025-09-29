@@ -11,4 +11,11 @@ export default [
     data: null,
     loader: "RGBE",
   },
+
+  // {
+  //   id: "environment",
+  //   src: "/assets/3D/kloppenheim_06_puresky_1k.jpg",
+  //   data: null,
+  //   loader: "Image",
+  // },
 ];

@@ -66,7 +66,7 @@ export default {
         distance: 50, // 50
         intensity: 13,
         startColor: "#FF3224",
-        endColor: "#fff2b8ff"
+        endColor: "#fff2b8"
     },
     shadow: {
         enabled: false,
