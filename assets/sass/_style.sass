@@ -17,6 +17,9 @@ header
         border-radius: 0 0 pxToRem(8) pxToRem(8)
         background: var(--color-background)
 
+        @include media-breakpoint-down(md)
+            padding: pxToRem(15) pxToRem(10) pxToRem(5)
+
 main
     padding-bottom: 0 !important
 
@@ -107,6 +110,8 @@ footer
         background: $color-popin-background
         height: 100%
         overflow-y: auto
+        @include media-breakpoint-down(md)
+            width: columns(12)
     .popup-close
         @include icon(close-line, before)
             font-size: pxToRem(22)
@@ -165,7 +170,23 @@ footer
             border-radius: 50%
             transform: translate(50%, -50%)
             z-index: 10
-
+    @include media-breakpoint-down(md)
+        bottom: 0
+        .content
+            width: 100%
+            border-radius: 0
+        .container
+            padding-bottom: var(--grid-gutter)
+            .title
+                padding-right: pxToRem(30)
+                + p
+                    display: none
+            &::after
+                top: 50%
+                right: pxToRem(10)
+                transform: translate(0%, -50%)
+                width: pxToRem(80)
+                height: pxToRem(80)
 
 
 html.has-modal-opened body::after

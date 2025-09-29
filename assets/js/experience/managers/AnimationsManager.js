@@ -8,9 +8,6 @@ export default class AnimationsManager {
         this.mixers = [];
         this.animations = clips;
         this.animations.forEach(animation => this.add( animation ));
-
-        console.log(this.mixers);
-
     }
 
     add ( animation ) {
@@ -19,7 +16,6 @@ export default class AnimationsManager {
 
         if ( options.mixer ) {
             mixer = this.mixers.find( mix => mix.name === options.mixer );
-            console.log(mixer);
         }
         if (!mixer) {
             mixer = new AnimationMixer( this.object );

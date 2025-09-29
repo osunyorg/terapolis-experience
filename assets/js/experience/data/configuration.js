@@ -28,7 +28,7 @@ export default {
     },
     lights: {
         ambient: {
-            intensity: 0.5,
+            intensity: 0.8,
             color: '#ffffff',
         },
         directional: {
