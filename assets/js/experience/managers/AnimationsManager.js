@@ -1,5 +1,4 @@
-import { AnimationClip, AnimationMixer } from "three";
-import configuration from "../data/configuration";
+import { AnimationMixer } from "three";
 import animationsConfig from "../data/animations";
 
 export default class AnimationsManager {

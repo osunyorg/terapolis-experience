@@ -1,4 +1,4 @@
-import { ACESFilmicToneMapping, AgXToneMapping, Color, EquirectangularReflectionMapping, LinearToneMapping, MeshPhysicalMaterial, MeshStandardMaterial, MeshToonMaterial, SRGBColorSpace } from "three";
+import { Color, EquirectangularReflectionMapping, SRGBColorSpace } from "three";
 import configuration from "../data/configuration";
 import AnimationsManager from "../managers/AnimationsManager";
 import BaseObject from "./BaseObject";

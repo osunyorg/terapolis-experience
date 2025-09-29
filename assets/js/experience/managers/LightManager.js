@@ -1,4 +1,4 @@
-import { AmbientLight,CameraHelper,Color,DirectionalLight, HemisphereLight, PointLight } from 'three';
+import { AmbientLight, DirectionalLight, HemisphereLight } from 'three';
 import configuration from '../data/configuration';
 import BaseManager from './BaseManager';
 

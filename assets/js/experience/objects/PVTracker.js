@@ -1,18 +1,6 @@
 import {
-    AxesHelper,
-    BackSide,
-    BoxGeometry,
-    Color,
-    EquirectangularReflectionMapping,
-    LinearFilter,
-    LinearMipMapLinearFilter,
-    Mesh,
-    MeshStandardMaterial,
     Object3D,
-    PlaneGeometry,
     ShaderLib,
-    ShaderMaterial,
-    SRGBColorSpace,
 } from "three";
 import configuration from "../data/configuration";
 import smoothValue from "../helpers/smoothValue";

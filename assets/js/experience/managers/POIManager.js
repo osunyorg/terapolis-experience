@@ -1,7 +1,6 @@
 import events from "../data/events";
 import POI from "../data/POI";
 import PointOfInterest from "../objects/PointOfInterest";
-import instancedStage from "../Stage";
 import BaseManager from "./BaseManager";
 
 export default class POIManager extends BaseManager {

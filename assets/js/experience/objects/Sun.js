@@ -1,7 +1,6 @@
-import { AmbientLight,CameraHelper,Color,DirectionalLight, HemisphereLight, Object3D, PointLight, Vector3 } from 'three';
+import { CameraHelper,Color, Object3D, PointLight, Vector3 } from 'three';
 import BaseObject from "./BaseObject";
 import configuration from '../data/configuration';
-import { Easing, Tween } from '@tweenjs/tween.js';
 import smoothValue from '../helpers/smoothValue';
 
 export default class Sun extends BaseObject {

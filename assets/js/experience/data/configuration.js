@@ -1,4 +1,4 @@
-import { Vector3, ACESFilmicToneMapping, PCFSoftShadowMap, VSMShadowMap, PCFShadowMap, ReinhardToneMapping, CineonToneMapping, NoToneMapping, AgXToneMapping } from 'three';
+import { Vector3, PCFSoftShadowMap, NoToneMapping } from 'three';
 export default {
     camera: {
         fov: 50,

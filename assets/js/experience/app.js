@@ -1,1 +1,1 @@
-import instancedStage from './Stage';
+import './Stage';
