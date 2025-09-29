@@ -1,5 +1,11 @@
 {{ define "main" }}
   <div class="document-content">
+    <div id="loader">
+      {{ partial "header/logo.html" }}
+      <div class="loader-bar">
+        <div id="loader-progress"></div>
+      </div>
+    </div>
     {{ partial "experience/container.html" . }}
     {{ partial "experience/contents.html" . }}
   </div>

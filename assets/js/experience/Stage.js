@@ -10,6 +10,7 @@ import { EventEmitter } from 'events';
 import events from './data/events';
 import AssetsManager from './managers/AssetsManager';
 import World from './objects/World';
+import { Easing, Tween } from '@tweenjs/tween.js';
 
 class Stage extends EventEmitter {
     constructor () {
@@ -94,6 +95,25 @@ class Stage extends EventEmitter {
             this.renderer.shadowMap.enabled = true;
             this.renderer.shadowMap.type = configuration.shadow.type;
         }
+
+        this.hideLoader();
+    }
+
+    hideLoader () {
+        let opacity = {value: 1};
+        const loader = document.getElementById('loader'),
+            tween = new Tween( opacity );
+
+        tween.to({value: 0}, 500)
+            .onUpdate(() => {
+                loader.style.opacity = opacity.value;
+            })
+            .onComplete(() => {
+                loader.style.display = 'none';
+            })
+            .start();
+
+        this.objectsToUpdate.push(tween)
     }
 
     loop () {

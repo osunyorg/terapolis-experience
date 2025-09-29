@@ -94,7 +94,7 @@ export default class AssetsManager {
         );
     }
     _onLoading ( xhr) {
-        // console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+        document.getElementById('loader-progress').style.width = Math.round( xhr.loaded / xhr.total * 100 ) + '%';
     }
     _onError ( error ) {
         console.log( error );
@@ -110,6 +110,7 @@ export default class AssetsManager {
     }
     _onComplete() {
         this.completeCallback();
+        
     }
     get (id) {
         return this.assets.find(asset => asset.id === id);

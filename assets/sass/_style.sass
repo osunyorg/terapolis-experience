@@ -87,6 +87,8 @@ footer
     transition: 0.5s ease-in-out
     &:not(.is-opened)
         pointer-events: none
+        img
+            display: none
     &.is-opened
         transform: translate(0, 0)
         opacity: 1
@@ -245,3 +247,29 @@ html.has-modal-opened body::after
             .gallery
                 display: flex !important
                 flex-direction: column
+
+#loader
+    position: absolute
+    inset: 0
+    background: var(--color-background)
+    z-index: 1000
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    img
+        margin-bottom: $spacing-3
+    p
+        font-weight: bold
+    .loader-bar
+        height: 3px
+        width: 150px
+        background: $color-popin-border
+        #loader-progress
+            left: 0
+            padding: auto
+            top: 0
+            height: 100%
+            width: 0%
+            background: var(--color-accent)
+            transition: 0.1s width
