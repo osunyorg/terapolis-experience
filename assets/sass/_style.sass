@@ -152,8 +152,7 @@ footer
         width: columns(8)
         box-shadow: 0px 0px 0px 4px $color-border-alpha
     .container
-        // padding: pxToRem(20) pxToRem(80) pxToRem(20) pxToRem(24)
-        padding: pxToRem(20) pxToRem(24) pxToRem(20) pxToRem(80)
+        padding: pxToRem(20) pxToRem(80) pxToRem(20) pxToRem(24)
         position: relative
         > * + *
             margin-top: $spacing-3
@@ -166,13 +165,13 @@ footer
             background-size: 110%
             display: block
             position: absolute
-            left: 0%
+            right: 0%
             top: 50%
             width: pxToRem(115)
             height: pxToRem(115)
             box-shadow: 0px 0px 0px 4px $color-border-alpha
             border-radius: 50%
-            transform: translate(-50%, -50%)
+            transform: translate(50%, -50%)
             z-index: 10
     @include media-breakpoint-down(md)
         bottom: 0
