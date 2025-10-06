@@ -48,7 +48,7 @@ items:
     children: []
     path: "/pages/points-dinteret/territoire"
     file: content/fr/pages/points-dinteret/territoire/_index.html
-  - title: 'Les ilots de vie : respect de l’écologie et des paysages'
+  - title: Mesures environnementales et îlots de vie
     target: "/points-dinteret/ilot-de-vie/"
     kind: page
     new_tab: false

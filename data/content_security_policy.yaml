@@ -11,3 +11,6 @@ allowed_domains:
   - "youtu.be"
   - "youtube-nocookie.com"
   - "www.youtube-nocookie.com"
+  - "vimeo.com"
+  - "player.vimeo.com"
+  - "vumbnail.com"
