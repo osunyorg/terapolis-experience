@@ -1,0 +1,4 @@
+<Directory />
+  AllowOverride AuthConfig FileInfo Limit Indexes
+  Require all granted
+</Directory>
