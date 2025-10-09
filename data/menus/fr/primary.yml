@@ -57,4 +57,25 @@ items:
     file: content/fr/pages/points-dinteret/ilot-de-vie/_index.html
   path: "/pages/points-dinteret"
   file: content/fr/pages/points-dinteret/_index.html
+- title: Actualités
+  target: "/"
+  kind: page
+  new_tab: false
+  children: []
+  path: "/posts"
+  file: content/fr/posts/_index.html
+- title: Organisations
+  target: "/"
+  kind: page
+  new_tab: false
+  children: []
+  path: "/organizations"
+  file: content/fr/organizations/_index.html
+- title: Équipe
+  target: "/"
+  kind: page
+  new_tab: false
+  children: []
+  path: "/persons"
+  file: content/fr/persons/_index.html
 
