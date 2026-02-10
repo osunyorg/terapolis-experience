@@ -13,7 +13,7 @@
       {{ with .Params.image }}
         {{ partial "commons/image-figure.html" (dict
           "image" .
-          "sizes" site.Params.image_sizes.design_system.hero
+          "sizes" site.Params.image_sizes._default.hero
           "lazy" true
         ) }}
       {{ end }}
