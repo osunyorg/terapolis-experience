@@ -2,80 +2,109 @@
 title: Menu principal
 items:
 - title: Points d'intérêt
+  slug: points-d-interet
   target: "/points-dinteret/"
   kind: page
   new_tab: false
   children:
   - title: 'Stockage batterie : conjuguer performance et efficience du réseau électrique'
+    slug: stockage-batterie-conjuguer-performance-et-efficience-du-reseau-electrique
     target: "/points-dinteret/stockage-batterie/"
     kind: page
     new_tab: false
     children: []
+    descendants_targets: []
     path: "/pages/points-dinteret/stockage-batterie"
     file: content/fr/pages/points-dinteret/stockage-batterie/_index.html
   - title: L’agrivoltaïsme appliqué à l'élevage bovin
+    slug: l-agrivoltaisme-applique-a-l-elevage-bovin
     target: "/points-dinteret/elevage-bovin/"
     kind: page
     new_tab: false
     children: []
+    descendants_targets: []
     path: "/pages/points-dinteret/elevage-bovin"
     file: content/fr/pages/points-dinteret/elevage-bovin/_index.html
   - title: L’agrivoltaïsme appliqué à l'élevage ovin
+    slug: l-agrivoltaisme-applique-a-l-elevage-ovin
     target: "/points-dinteret/elevage-ovin/"
     kind: page
     new_tab: false
     children: []
+    descendants_targets: []
     path: "/pages/points-dinteret/elevage-ovin"
     file: content/fr/pages/points-dinteret/elevage-ovin/_index.html
   - title: Machines autonomes et robotique agricole
+    slug: machines-autonomes-et-robotique-agricole
     target: "/points-dinteret/agxeed/"
     kind: page
     new_tab: false
     children: []
+    descendants_targets: []
     path: "/pages/points-dinteret/agxeed"
     file: content/fr/pages/points-dinteret/agxeed/_index.html
   - title: Agrivoltaïsme pour la grande culture
+    slug: agrivoltaisme-pour-la-grande-culture
     target: "/points-dinteret/grande-culture/"
     kind: page
     new_tab: false
     children: []
+    descendants_targets: []
     path: "/pages/points-dinteret/grande-culture"
     file: content/fr/pages/points-dinteret/grande-culture/_index.html
   - title: Révolutionner l’énergie de nos territoires
+    slug: revolutionner-l-energie-de-nos-territoires
     target: "/points-dinteret/territoire/"
     kind: page
     new_tab: false
     children: []
+    descendants_targets: []
     path: "/pages/points-dinteret/territoire"
     file: content/fr/pages/points-dinteret/territoire/_index.html
   - title: Mesures environnementales et îlots de vie
+    slug: mesures-environnementales-et-ilots-de-vie
     target: "/points-dinteret/ilot-de-vie/"
     kind: page
     new_tab: false
     children: []
+    descendants_targets: []
     path: "/pages/points-dinteret/ilot-de-vie"
     file: content/fr/pages/points-dinteret/ilot-de-vie/_index.html
+  descendants_targets:
+  - "/points-dinteret/agxeed/"
+  - "/points-dinteret/elevage-bovin/"
+  - "/points-dinteret/elevage-ovin/"
+  - "/points-dinteret/grande-culture/"
+  - "/points-dinteret/ilot-de-vie/"
+  - "/points-dinteret/stockage-batterie/"
+  - "/points-dinteret/territoire/"
   path: "/pages/points-dinteret"
   file: content/fr/pages/points-dinteret/_index.html
 - title: Actualités
+  slug: actualites
   target: "/"
   kind: page
   new_tab: false
   children: []
+  descendants_targets: []
   path: "/posts"
   file: content/fr/posts/_index.html
 - title: Organisations
+  slug: organisations
   target: "/"
   kind: page
   new_tab: false
   children: []
+  descendants_targets: []
   path: "/organizations"
   file: content/fr/organizations/_index.html
 - title: Équipe
+  slug: equipe
   target: "/"
   kind: page
   new_tab: false
   children: []
+  descendants_targets: []
   path: "/persons"
   file: content/fr/persons/_index.html
 
