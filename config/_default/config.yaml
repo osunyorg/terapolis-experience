@@ -3,8 +3,6 @@ _merge: deep
 params:
   summary:
     position: hero
-  search:
-    active: true
   home:
     head:
       title: site
