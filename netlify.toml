@@ -3,7 +3,7 @@
   command = "yarn osuny build"
 
 [build.environment]
-  HUGO_VERSION = "0.154.5"
+  HUGO_VERSION = "0.159.2"
 
 [[headers]]
   for = "/*"
@@ -11,3 +11,8 @@
     X-Frame-Options = "SAMEORIGIN"
     X-XSS-Protection = "0"
     X-Content-Type-Options = "nosniff"
+
+[[redirects]]
+  from = "/grande-culture/"
+  to = "/points-dinteret/grande-culture/"
+
