@@ -220,6 +220,8 @@ html.has-modal-opened body::after
         margin-bottom: $spacing-3
     .block
         --block-space-y: #{$spacing-2}
+        img
+            max-width: 100%
     .block-gallery
         &--carousel
             background: transparent !important
@@ -233,9 +235,13 @@ html.has-modal-opened body::after
             display: block !important
     .block-features
         .block-content
+            .top
+                width: auto
             ul
                 display: flex !important
                 flex-direction: column
+                img
+                    width: initial !important
     .block-chapter
         .chapter
             flex-direction: column !important
