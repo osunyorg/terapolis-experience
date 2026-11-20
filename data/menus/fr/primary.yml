@@ -34,15 +34,6 @@ items:
     descendants_targets: []
     path: "/pages/points-dinteret/elevage-ovin"
     file: content/fr/pages/points-dinteret/elevage-ovin/_index.html
-  - title: Machines autonomes et robotique agricole
-    slug: machines-autonomes-et-robotique-agricole
-    target: "/points-dinteret/agxeed/"
-    kind: page
-    new_tab: false
-    children: []
-    descendants_targets: []
-    path: "/pages/points-dinteret/agxeed"
-    file: content/fr/pages/points-dinteret/agxeed/_index.html
   - title: Agrivoltaïsme pour la grande culture
     slug: agrivoltaisme-pour-la-grande-culture
     target: "/points-dinteret/grande-culture/"
@@ -52,6 +43,15 @@ items:
     descendants_targets: []
     path: "/pages/points-dinteret/grande-culture"
     file: content/fr/pages/points-dinteret/grande-culture/_index.html
+  - title: Machines autonomes et robotique agricole
+    slug: machines-autonomes-et-robotique-agricole
+    target: "/points-dinteret/agxeed/"
+    kind: page
+    new_tab: false
+    children: []
+    descendants_targets: []
+    path: "/pages/points-dinteret/agxeed"
+    file: content/fr/pages/points-dinteret/agxeed/_index.html
   - title: Révolutionner l’énergie de nos territoires
     slug: revolutionner-l-energie-de-nos-territoires
     target: "/points-dinteret/territoire/"
